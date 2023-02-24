@@ -1,0 +1,98 @@
+.sidebar{
+    flex: 0.25;
+    border-right: 0.1px solid rgba(253, 253, 253, 0.2);
+    height: 100%;
+    background-color: var(--bg-color);
+    padding: 0px 30px;
+    position: fixed;
+    width: 20rem;
+}
+.headSidebar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    margin-bottom: 18px;
+    margin-top: 8px;
+}
+.headSidebar svg{
+    font-size: 1.35rem;
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    padding: 6px;
+    cursor: pointer;
+}
+.headSidebar svg:hover{
+    background-color: #434750;
+}
+.input{
+    position: relative;
+}
+.input svg{
+    position: absolute;
+    z-index: 10;
+    font-size: 22px;
+    top: 9px;
+    left: 6px;
+    color: #bbb;
+}
+.input input{
+    background-color: #3a3b3c;
+    border: none;
+    width: 86%;
+    position: absolute;
+    padding: 10px 0px 10px 32px;
+    border-radius: 18px;
+    outline: none;
+    color: #bbb;
+}
+.input input::placeholder{
+    font-size: 16px;
+}
+.list{
+    margin-top: 70px;
+    margin-bottom: 10px;
+}
+.list .item{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 14px;
+    padding: 6px;
+}
+.list .item:hover{
+    background-color: #3a3b3c;
+    border-radius: 8px;
+}
+.list .item.active{
+    background-color: #3a3b3c;
+    border-radius: 8px;
+}
+.list .item.active svg{
+    background-color: #2374e1;
+}
+.list .item svg {
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 22px;
+    cursor: pointer;
+    color: white;
+    margin-right: 12px;
+}
+.btn{
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    background-color: #263951;
+    color: #2d88ff;
+    border: none;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #3a516e;
+}

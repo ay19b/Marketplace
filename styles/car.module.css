@@ -1,0 +1,97 @@
+.car{
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+.side{
+    background-color: #242526;
+    border-right: 0.1px solid rgba(253, 253, 253, 0.2);
+    padding: 0px 30px;
+    width: 20rem;
+    height: 100%;
+}
+.headSide{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+.headSide svg{
+    font-size: 2.6rem;
+}
+.headSide a {
+    margin-top: 4px;
+}
+.headSide a svg{
+    background-color: black;
+    border-radius: 50%;
+    padding: 8px;
+    fill: white;
+}
+.save{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.save .leftSave span{
+    color: #b0b3b8;
+}
+.save .leftSave h2{
+    color: white;
+}
+.save .rightSave button{
+    color: #2d88ff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+.save .rightSave button:hover{
+    background-color: #414346;
+}
+.user{
+    display: flex;
+    margin-bottom: 18px;
+}
+.user img{
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.user .infUser .userName{
+    color: #b0b3b8;
+}
+.user .infUser h5{
+    margin-top: 6px;
+    color: #888c8e;
+}
+
+
+.upload{
+    margin-top: 10px;
+}
+.upload .title{
+    color: #b0b3b8;
+    margin-bottom: 4px;
+}
+.upload .span{
+    color: #888c8e;
+}
+.upload .boxUpload{
+    border: 1px solid #888c8e;
+    width: 100%;
+    height: 10rem;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+
+.vehicle .title{
+    color: #b0b3b8;
+    margin-bottom: 4px;
+}
+.vehicle .span{
+    color: #888c8e;
+}

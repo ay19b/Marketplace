@@ -1,0 +1,68 @@
+.navbar{
+    padding: 6px;
+    color: #ccc;
+    border-bottom: 0.1px solid rgba(253, 253, 253, 0.2);
+    background-color: var(--bg-color);
+    position: sticky;
+    top: 0;
+}
+.navbar .container{
+    width: 97%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar svg{
+    font-size: 28px;
+}
+.navbar .first {
+    flex: 0.2;
+    display: flex;
+    align-items: center;
+}
+.first svg:nth-child(1){
+    margin-right: 6px;
+    cursor: pointer;
+}
+.first svg:nth-child(2){
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 22px;
+}
+.navbar .second {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.second svg{
+    flex: 0.2;
+    padding: 10px 0;
+    cursor: pointer;
+}
+.second svg:hover{
+    background-color: #3a3b3c;
+    border-radius: 8px;
+}
+.second svg.active{
+    color: #2374E1;
+    border-bottom: 2px solid #2374E1;
+}
+.second svg.active:hover{
+    background-color: transparent;
+    border-radius: 0px;
+}
+.navbar .third{
+    flex: 0.2;
+    display: flex;
+    justify-content: space-around;
+}
+.third svg{
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 22px;
+    cursor: pointer;
+}
