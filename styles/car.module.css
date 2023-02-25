@@ -1,14 +1,21 @@
 .car{
     display: flex;
-    align-items: center;
+    height: 100vh;
+    overflow: hidden;
     flex: 1;
 }
+
+  
 .side{
     background-color: #242526;
     border-right: 0.1px solid rgba(253, 253, 253, 0.2);
-    padding: 0px 30px;
-    width: 20rem;
+    width: 21rem;
     height: 100%;
+}
+.side .head{
+    position: sticky;
+    top: 0;
+    padding: 0 15px 0 15px;
 }
 .headSide{
     display: flex;
@@ -52,6 +59,15 @@
 .save .rightSave button:hover{
     background-color: #414346;
 }
+.side .infSide{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 23rem;
+    scrollbar-color: #505151 transparent;
+    scrollbar-width: thin;
+    padding: 0 15px 0 15px;
+}
+
 .user{
     display: flex;
     margin-bottom: 18px;
@@ -62,6 +78,7 @@
 }
 .user .infUser .userName{
     color: #b0b3b8;
+    font-weight: bolder;
 }
 .user .infUser h5{
     margin-top: 6px;
@@ -94,4 +111,46 @@
 }
 .vehicle .span{
     color: #888c8e;
+}
+.MuiFormLabel{
+    color: white !important;
+}
+
+
+
+
+.complet{
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: #242526;
+    
+    padding: 0 15px 0 15px;
+}
+.complet .checkComplet{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+.complet .checkComplet .barComplet{
+    background-color: #0882de;
+    width: 48%;
+    height: 7px;
+    border-radius: 10px;
+}
+.complet hr{
+    width: 100%;
+    border-color: rgb(136, 140, 142);
+}
+.complet .btn{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #505151;
+    border: none;
+    color: #848585;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 12px 0;
 }

@@ -33,6 +33,7 @@ export default function SidebarCars() {
     };
   return (
     <div className={style.side}>
+        <div className={style.head}>
           <div className={style.headSide}>
              <Link href="/">
                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0 0 16 16">
@@ -55,6 +56,8 @@ export default function SidebarCars() {
               <button>Save Draft</button> 
             </div>
           </div>
+        </div>
+        <div className={style.infSide}>
           <div className={style.user}>
           <Image
               src={Profil}
@@ -138,18 +141,23 @@ export default function SidebarCars() {
          <div className={style.dcp}>
             <h3 className={style.title}>Description</h3>
             <span className={style.span}>Tell buyers anything that you haven't had the chance to include yet about your vehicle.</span>
-            <textarea id="w3review" name="w3review" rows="6" cols="42" style={{resize: 'none'}}></textarea>
+            <textarea id="w3review" name="w3review" rows="6" cols="40" style={{resize: 'none'}}></textarea>
          </div>
          <span>Optional</span>
          <p>Marketplace items are public and can be seen by anyone on or off Facebook.
            Items such as animals, drugs, weapons, counterfeits and other items that infringe intellectual
             property aren't allowed on Marketplace.<span>See our Commerce Policies.</span> 
          </p>
-         <div className={style.complet}>
-          <div className={style.firstComplet}></div>
-          <div className={style.secondComplet}></div>
          </div>
-         <button>Next</button>
+         <div className={style.complet}>
+          <div className={style.checkComplet}>
+            <div className={style.barComplet}></div>
+            <div className={style.barComplet}></div>
+          </div>
+          <Divider />
+          <button className={style.btn}>Next</button>
+         </div>
+         
         </div>
   )
 }
