@@ -9,8 +9,13 @@
 .side{
     background-color: #242526;
     border-right: 0.1px solid rgba(253, 253, 253, 0.2);
-    width: 21rem;
+    width: 26%;
     height: 100%;
+}
+.side hr{
+    width: 100%;
+    border-color: rgb(136, 140, 142);
+    margin: 12px 0;
 }
 .side .head{
     position: sticky;
@@ -84,8 +89,9 @@
     margin-top: 6px;
     color: #888c8e;
 }
-
-
+.MuiOutlinedInput-notchedOutline{
+    border-color: rgba(255, 255, 255, 0.23) !important;
+}
 .upload{
     margin-top: 10px;
 }
@@ -102,6 +108,22 @@
     height: 10rem;
     border-radius: 8px;
     margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin-bottom: 18px;
+}
+.boxUpload svg{
+    color: white;
+    font-size: 2rem;
+}
+.boxUpload h3{
+    color: white;
+}
+.boxUpload span{
+    color: #888c8e;
 }
 
 
@@ -115,10 +137,51 @@
 .MuiFormLabel{
     color: white !important;
 }
+.vehicle div{
 
+}
+.vehicle .TextField label{
+    color: rgba(255, 255, 255, 0.6) !important;
+}
 
+.price{
+    margin-top: 10px;
+}
+.price .title{
+    color: #b0b3b8;
+    margin-bottom: 4px;
+}
+.price .span{
+    color: #888c8e;
+}
 
-
+.dcp{
+    margin-top: 10px;
+}
+.dcp .title{
+    color: #b0b3b8;
+    margin-bottom: 4px;
+}
+.dcp .span{
+    color: #888c8e;
+}
+.option{
+    margin-top: -15px;
+    width: 95%;
+}
+.option span{
+    color: #b0b3b8;
+    font-size: 12px;
+}
+.option p{
+    color: #b0b3b8;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+.option p span{
+    color: #2b7be4;
+}
 .complet{
     position: sticky;
     bottom: 0;
@@ -134,10 +197,15 @@
     margin: 12px 0;
 }
 .complet .checkComplet .barComplet{
-    background-color: #0882de;
     width: 48%;
     height: 7px;
     border-radius: 10px;
+}
+.complet .checkComplet .barComplet:first-child{
+    background-color: #0882de;
+}
+.complet .checkComplet .barComplet:last-child{
+    background-color: #ffffff;
 }
 .complet hr{
     width: 100%;

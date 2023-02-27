@@ -8,6 +8,8 @@ import {MdGroups,MdStorefront} from 'react-icons/md'
 import {CgMenuGridO} from 'react-icons/cg'
 import {RiMessengerFill} from "react-icons/ri"
 import {IoLogoGameControllerA} from "react-icons/io"
+import Profil from '../public/profile.jpg'
+import Image from 'next/image'
 
 export default function Navbar() {
   return (
@@ -33,7 +35,12 @@ export default function Navbar() {
             <CgMenuGridO />
             <RiMessengerFill />
             <FaBell />
-            <CgMenuGridO />
+            <Image
+              src={Profil}
+              alt="Picture of the author"
+              width={35}
+              height={35}
+            />
         </div>
       </div>
     </div>

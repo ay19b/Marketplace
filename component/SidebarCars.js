@@ -13,7 +13,13 @@ import Profil from '../public/profile.jpg'
 import Image from 'next/image'
 import TextField from '@mui/material/TextField';
 import style from '../styles/car.module.css'
+import { makeStyles } from '@mui/styles'
 
+const useStyles = makeStyles((theme) => ({
+  label: {
+      color: 'rgba(255, 255, 255, 0.6) !important',
+  },
+}));
 const names = [
     'car/van',
     'Motorcycle',
@@ -26,6 +32,7 @@ const names = [
   ];
 
 export default function SidebarCars() {
+    const classes = useStyles();
     const [age, setAge] = React.useState('');
 
     const handleChange = (event) => {
@@ -71,23 +78,22 @@ export default function SidebarCars() {
             </div>
           </div>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">vehicle type</InputLabel>
+            <InputLabel id="demo-simple-select-label" className={classes.label}>vehicle type</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={age}
-              label="Age"
+              label="vehicle type"
               onChange={handleChange}
             >
               {names.map((name) => (
-              <MenuItem
-                key={name}
-                value={name}
-               >
-              {name}
-            </MenuItem>
-          ))}
-              
+                <MenuItem
+                  key={name}
+                  value={name}
+                 >
+               {name}
+              </MenuItem>
+              ))}  
             </Select>
           </FormControl>
 
@@ -107,7 +113,7 @@ export default function SidebarCars() {
             <h3 className={style.title}>About this vehicle</h3>
             <span className={style.span}>Help buyers know more about the vehicle that you're listing.</span>
 
-            <TextField id="outlined-basic" label="Loacation" variant="outlined" />
+            <TextField className={style.TextField} id="outlined-basic" label="Loacation" variant="outlined" fullWidth/>
             <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Year</InputLabel>
             <Select
@@ -128,26 +134,35 @@ export default function SidebarCars() {
               
             </Select>
           </FormControl>
-          <TextField id="outlined-basic" label="Make" variant="outlined" />
-          <TextField id="outlined-basic" label="Model" variant="outlined" />
+          <TextField id="outlined-basic" label="Make" variant="outlined" fullWidth/>
+          <TextField id="outlined-basic" label="Model" variant="outlined" fullWidth/>
          </div>
          <Divider />
          <div className={style.price}>
             <h3 className={style.title}>Price</h3>
             <span className={style.span}>Enter your price for this vehicle.</span>
-            <TextField id="outlined-basic" label="Model" variant="outlined" />
+            <TextField id="outlined-basic" label="price" variant="outlined" fullWidth/>
          </div>
          <Divider />
          <div className={style.dcp}>
             <h3 className={style.title}>Description</h3>
             <span className={style.span}>Tell buyers anything that you haven't had the chance to include yet about your vehicle.</span>
-            <textarea id="w3review" name="w3review" rows="6" cols="40" style={{resize: 'none'}}></textarea>
+            <TextField
+              id="outlined-multiline-static"
+              label="Discription"
+              multiline
+              rows={4}
+              fullWidth
+             />
          </div>
+         <div className={style.option}>
          <span>Optional</span>
          <p>Marketplace items are public and can be seen by anyone on or off Facebook.
            Items such as animals, drugs, weapons, counterfeits and other items that infringe intellectual
             property aren't allowed on Marketplace.<span>See our Commerce Policies.</span> 
          </p>
+         </div>
+         
          </div>
          <div className={style.complet}>
           <div className={style.checkComplet}>
@@ -155,9 +170,8 @@ export default function SidebarCars() {
             <div className={style.barComplet}></div>
           </div>
           <Divider />
-          <button className={style.btn}>Next</button>
+          <button className={style.btn} disabled>Next</button>
          </div>
-         
-        </div>
+         </div>
   )
 }

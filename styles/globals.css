@@ -14,3 +14,25 @@ body{
   background-color: black;
   font-family: 'Roboto', sans-serif;
 }
+.MuiTextField-root{
+   margin: 15px 0px;
+}
+.MuiMenu-list{
+  background-color: #171717;
+  color: white;
+}
+.MuiInputLabel-root{
+  color: white;
+}
+.MuiOutlinedInput-notchedOutline{
+  border-color: rgba(255, 255, 255, 0.23);
+}
+.Mui-focused{
+  border-color: rgba(151, 61, 61, 0.23);
+}
+.MuiOutlinedInput-root{
+  color: white !important;
+}
+.MuiSelect-icon{
+  color: white;
+}
