@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {MdCancel} from 'react-icons/md'
 import {BsFacebook} from "react-icons/bs"
 import {GiWorld} from "react-icons/gi"
@@ -14,6 +14,7 @@ import Image from 'next/image'
 import TextField from '@mui/material/TextField';
 import style from '../styles/car.module.css'
 import { makeStyles } from '@mui/styles'
+import ViewCars from './viewCars'
 
 const useStyles = makeStyles((theme) => ({
   label: {
@@ -31,14 +32,36 @@ const names = [
     'Other',
   ];
 
+  const years=[];
+  function createYears(){
+    for(let i=1990; i<2023; i++){
+      years.push(i)          
+    }
+  }
+  createYears()
+
+
 export default function SidebarCars() {
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
+    const [type, setType] = useState('');
+    const [photo, setPhoto] = useState('');
+    const [location, setLocation] = useState('');
+    const [year, setYear] = useState('');
+    const [make, setMake] = useState('');
+    const [model, setModel] = useState('');
+    const [price, setPrice] = useState('');
+    const [disc, setDisc] = useState('');
 
-    const handleChange = (event) => {
-      setAge(event.target.value);
+    const handleChangeTypes = (event) => {
+      setType(event.target.value);
     };
+    const handleChangeYears = (event) => {
+      setYear(event.target.value);
+    };
+
+    
   return (
+    <>
     <div className={style.side}>
         <div className={style.head}>
           <div className={style.headSide}>
@@ -82,23 +105,22 @@ export default function SidebarCars() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={age}
+              value={type}
               label="vehicle type"
-              onChange={handleChange}
+              onChange={handleChangeTypes}
             >
               {names.map((name) => (
-                <MenuItem
-                  key={name}
-                  value={name}
-                 >
-               {name}
-              </MenuItem>
-              ))}  
+              <MenuItem
+                key={name}
+                value={name}
+               >
+              {name}
+            </MenuItem>
+          ))}  
             </Select>
           </FormControl>
 
           <Divider />
-           
           <div className={style.upload}>
             <h3 className={style.title}>Photo upload</h3>
             <span className={style.span}>Photos  · 0/20 – You can add up to 20 photos</span>
@@ -112,36 +134,63 @@ export default function SidebarCars() {
          <div className={style.vehicle}>
             <h3 className={style.title}>About this vehicle</h3>
             <span className={style.span}>Help buyers know more about the vehicle that you're listing.</span>
-
-            <TextField className={style.TextField} id="outlined-basic" label="Loacation" variant="outlined" fullWidth/>
+            <TextField 
+              className={style.TextField}
+              value={location}
+              id="outlined-basic"
+              label="Loacation"
+              variant="outlined"
+              onChange={(event) => setLocation(event.target.value)}
+              fullWidth
+            />
             <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Year</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={age}
-              label="Age"
-              onChange={handleChange}
+              value={year}
+              label="Year"
+              onChange={handleChangeYears}
             >
-              {names.map((name) => (
-              <MenuItem
-                key={name}
-                value={name}
-               >
-              {name}
-            </MenuItem>
-          ))}
+              {years.map(year =>
+                 <MenuItem
+                   key={year}
+                   value={year}
+                 >
+                  {year}
+                </MenuItem>
+              )}
               
             </Select>
           </FormControl>
-          <TextField id="outlined-basic" label="Make" variant="outlined" fullWidth/>
-          <TextField id="outlined-basic" label="Model" variant="outlined" fullWidth/>
+          <TextField
+           id="outlined-basic"
+           label="Make"
+           variant="outlined"
+           value={make}
+           onChange={(event) => setMake(event.target.value)}
+           fullWidth
+          />
+          <TextField
+            id="outlined-basic"
+            label="Model"
+            variant="outlined"
+            value={model}
+            onChange={(event) => setModel(event.target.value)}
+            fullWidth
+          />
          </div>
          <Divider />
          <div className={style.price}>
             <h3 className={style.title}>Price</h3>
             <span className={style.span}>Enter your price for this vehicle.</span>
-            <TextField id="outlined-basic" label="price" variant="outlined" fullWidth/>
+            <TextField
+              id="outlined-basic"
+              label="price"
+              variant="outlined"
+              onChange={(event) => setPrice(event.target.value)}
+              fullWidth
+            />
          </div>
          <Divider />
          <div className={style.dcp}>
@@ -152,6 +201,7 @@ export default function SidebarCars() {
               label="Discription"
               multiline
               rows={4}
+              onChange={(event) => setDisc(event.target.value)}
               fullWidth
              />
          </div>
@@ -172,6 +222,8 @@ export default function SidebarCars() {
           <Divider />
           <button className={style.btn} disabled>Next</button>
          </div>
-         </div>
+    </div>
+    <ViewCars title={type} price={price}/>
+    </>
   )
 }

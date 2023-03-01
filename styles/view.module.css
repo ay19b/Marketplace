@@ -76,6 +76,10 @@
     font-size: 16px;
     font-weight: 600;
 }
+.leftInfoView img{
+    height: 100%;
+    width: 100%;
+}
 .infoView .rightInfoView{
     border: 1px solid rgba(255, 255, 255, 0.1);
     width: 45%;
@@ -119,7 +123,7 @@
 }
 .rightInfoView .btnMsg{
     position: fixed;
-    bottom: 50px;
+    bottom: 75px;
     background-color: #242526;
     width: 27%;
     height: 3rem;

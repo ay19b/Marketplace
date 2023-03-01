@@ -12,7 +12,7 @@ a{
 }
 body{
   background-color: black;
-  font-family: 'Roboto', sans-serif;
+  font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
 }
 .MuiTextField-root{
    margin: 15px 0px;
@@ -35,4 +35,63 @@ body{
 }
 .MuiSelect-icon{
   color: white;
+}
+.MuiPaper-root{
+  scrollbar-color: #505151 #171717;
+  scrollbar-width: thin;
+}
+.carousel-root {
+  outline: none;
+  height: 100% !important;
+  width: 100% !important;
+}
+.carousel.carousel-slider{
+  height: 85% !important;
+}
+.carousel .slide img {
+  width: 88% !important;
+  margin-top: 20px !important;
+}
+.carousel .thumbs-wrapper {
+  margin: 8px !important;
+}
+.carousel .thumb{
+  border: none !important;
+}
+.carousel .thumb,
+.carousel .thumb.selected{
+  width: 60px !important;
+  height: 3rem !important;
+}
+.carousel .thumb.selected{
+  border: 3px solid #a8a0a0 !important;
+}
+.carousel .control-dots{
+  display: none;
+}
+
+.carousel.carousel-slider .control-arrow{
+  padding: 5px !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  border-radius: 50% !important;
+  top: 50% !important;
+  opacity: 1 !important;
+  background-color: white !important;
+  margin:0px 8px;
+}
+.carousel .control-prev.control-arrow::before{
+  border-right: 8px solid #020202 !important;
+}
+.carousel .control-next.control-arrow::before{
+  border-left: 10px solid #7e8284 !important;
+  margin: 0 16px !important;
+  border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important;
+}
+.carousel .control-prev.control-arrow::before{
+  border-right: 10px solid #7e8284 !important;
+  border-top: 10px solid transparent !important;
+  border-bottom: 10px solid transparent !important;
+  margin: 0 4px 0 0 !important;
 }

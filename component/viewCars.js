@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {FaBell} from 'react-icons/fa'
 import {CgMenuGridO} from 'react-icons/cg'
 import {RiMessengerFill} from "react-icons/ri"
@@ -6,8 +6,19 @@ import Profil from '../public/profile.jpg'
 import Image from 'next/image'
 import style from '../styles/view.module.css'
 import Divider from '@mui/material/Divider';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
-export default function ViewCars() {
+
+export default function ViewCars({title,photo,price,year,model,make,location,disc}) {
+  const mapSrc = `https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+  const mapStand = `https://maps.google.com/maps?q=algeria&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+  const [image, setImage] = useState([]);
+
+  useEffect(() => {
+    setImage(photo);
+  }, [photo]);
+
   return (
     <div className={style.view}>
       <div className={style.container}>
@@ -24,27 +35,40 @@ export default function ViewCars() {
        <div className={style.viewContent}>
          <h4 className={style.title}>Preview</h4>
          <div className={style.infoView}>
-           <div className={style.leftInfoView}>
+          
+            <div className={style.leftInfoView}>
+             {photo.length>0?
+                
+              <Carousel autoFocus>
+                {image.map((p, i) => (
+                 <div key={i} autoFocus>
+                   <img src={URL.createObjectURL(p)} alt={`slide ${i}`} />
+                 </div>
+               ))}
+              </Carousel>            
+             :<>
               <h2>Your listing preview</h2>
               <h4>As you create your listing, you can preview how it will appear to others on Marketplace.</h4>
-           </div>
+             </>
+             }
+            </div>
            <div className={style.rightInfoView}>
             <div className={style.container}>
              <div className={style.infoContainer}>
-              <h2>title</h2>
-              <h3>price</h3>
-              <span>Listed a few seconds ago in algeria</span>
+              <h2>{year || model || make ? `${year} ${make} ${model}`:'title'}</h2>
+              <h3>{price?price+' '+'DA':'price'}</h3>
+              <span>Listed a few seconds ago in {location?location:'algeria'}</span>
               <Divider />
               <div className={style.map}>
                 <h3>Seller's discription</h3>
-                <span>Discription will appear here</span>
-                <div class="mapouter">
-                  <div class="gmap_canvas">
-                    <iframe width="370" height="150" id="gmap_canvas" src="https://maps.google.com/maps?q=oran&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                <span>{disc?disc:'Discription will appear here'}</span>
+                <div className={style.mapouter}>
+                  <div className={style.gmap_canvas}>
+                    <iframe width="370" height="150" id="gmap_canvas" src={location?mapSrc:mapStand} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
                   </div>
                 </div>
                  <br></br>
-                <span>algeria</span>
+                <span>{location?location:'algeria'}</span>
                 <br></br>
                 <h5>Location is approximate</h5>
               </div>
@@ -69,7 +93,6 @@ export default function ViewCars() {
                 <button disabled>Message</button>
             </div>
             </div>
-            
            </div>
          </div>
        </div>

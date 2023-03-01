@@ -1,11 +1,113 @@
-import React from 'react'
-import style from '../styles/car.module.css'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import SidebarCars from '@/component/SidebarCars'
 import ViewCars from '@/component/viewCars'
+import {MdCancel} from 'react-icons/md'
+import {FaMapMarkerAlt} from 'react-icons/fa'
+import {BsFacebook} from "react-icons/bs"
+import {GiWorld} from "react-icons/gi"
+import {AiFillFileAdd} from 'react-icons/ai'
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Link from 'next/link'
+import Divider from '@mui/material/Divider';
+import Profil from '../public/profile.jpg'
+import Image from 'next/image'
+import TextField from '@mui/material/TextField';
+import style from '../styles/car.module.css'
+import { makeStyles } from '@mui/styles'
+import FilledInput from '@mui/material/FilledInput';
+import InputAdornment from '@mui/material/InputAdornment';
+
+
+
+const useStyles = makeStyles((theme) => ({
+  label: {
+      color: 'rgba(255, 255, 255, 0.6) !important',
+  },
+}));
+const names = [
+    'car/van',
+    'Motorcycle',
+    'Power sport',
+    'Motorhome/caravan',
+    'Trailer',
+    'Boat',
+    'Commercial/Industrial',
+    'Other',
+  ];
+  const years=[];
+  function createYears(){
+    for(let i=1990; i<2023; i++){
+      years.push(i)          
+    }
+  }
+  createYears()
 
 export default function Car() {
-  
+    const [type, setType] = useState('');
+    const [images, setImages] = useState([]);
+    const [location, setLocation] = useState('');
+    const [year, setYear] = useState('');
+    const [make, setMake] = useState('');
+    const [model, setModel] = useState('');
+    const [price, setPrice] = useState('');
+    const [disc, setDisc] = useState('');
+    const [prod, setProd] = useState([]);
+
+  const handleFileInput = (event) => {
+    const files = Array.from(event.target.files);
+    setImages([...images, ...files]);
+  }
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const files = Array.from(event.dataTransfer.files);
+    setImages([...images, ...files]);
+  }
+
+  const handleRemove = (index) => {
+    const newImages = [...images];
+    newImages.splice(index, 1);
+    setImages(newImages);
+  }
+    
+    const handleChangeTypes = (event) => {
+      setType(event.target.value);
+    };
+    const handleChangeYears = (event) => {
+      setYear(event.target.value);
+    };
+
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+    
+    function drag(event) {
+      event.dataTransfer.setData("text/plain", event.currentTarget.id);
+    }
+    
+    function drop(event) {
+      event.preventDefault();
+      const id = event.dataTransfer.getData("text/plain");
+      const node = document.getElementById(id);
+      if (node) {
+        event.target.appendChild(node);
+      } else {
+        console.error(`Unable to find element with ID ${id}`);
+      }
+    }
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const data = {type, images,location, year,make, model, price, disc };
+      setProd(data);
+      localStorage.setItem('prod', JSON.stringify(data));
+      console.log(localStorage.getItem('prod'));
+    };
+
   return (
     <>
       <Head>
@@ -14,8 +116,201 @@ export default function Car() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className={style.car}>
-        <SidebarCars />
-        <ViewCars />
+       <div className={style.side}>
+        <div className={style.head}>
+          <div className={style.headSide}>
+             <Link href="/">
+               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0 0 16 16">
+                 <path d="M 2.75 2.042969 L 2.042969 2.75 L 2.398438 3.101563 L 7.292969 8 L 2.042969 13.25 L 2.75 13.957031 L 8 8.707031 L 12.894531 13.605469 L 13.25 13.957031 L 13.957031 13.25 L 13.605469 12.894531 L 8.707031 8 L 13.957031 2.75 L 13.25 2.042969 L 8 7.292969 L 3.101563 2.398438 Z"></path>
+               </svg>
+             </Link>
+             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48">
+                <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#2aa4f4"></stop><stop offset="1" stopColor="#007ad9"></stop></linearGradient>
+                <path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path>
+                <path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
+             </svg>
+          </div>
+          <div className={style.save}>
+            <div className={style.leftSave}>
+              <span>Marketplace</span>
+              <h2>Vehicle for sale</h2>
+            </div>
+            <div className={style.rightSave}>
+              <button>Save Draft</button> 
+            </div>
+          </div>
+        </div>
+        <form onSubmit={handleSubmit}>
+        <div className={style.infSide}>
+          <div className={style.user}>
+          <Image
+              src={Profil}
+              alt="Picture of the author"
+              width={35}
+              height={35}
+            />
+            <div className={style.infUser}>
+              <span className={style.userName}>John</span>
+              <h5>Listing to Marketplace. <GiWorld />Public</h5>
+            </div>
+          </div>
+
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">vehicle type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={type}
+              label="vehicle type"
+              onChange={handleChangeTypes}
+            >
+              {names.map((name) => (
+              <MenuItem
+                key={name}
+                value={name}
+               >
+              {name}
+            </MenuItem>
+          ))}  
+            </Select>
+          </FormControl>
+
+          <Divider />
+          <div className={style.upload}>
+            <h3 className={style.title}>Photo upload</h3>
+            <span className={style.span}>Photos  · {images.length}/20 – You can add up to 20 photos</span>
+            {images.length>0?
+              <div className={style.imageAdd}>
+                  {images.map((image, index) => (
+                    <div className={style.img} id={index} key={index} onDrop={(event) => drop(event)} onDragOver={(event) => allowDrop(event)}>
+                     <img id={index} src={URL.createObjectURL(image)} alt="Uploaded Image" draggable="true" onDragStart={(event) => drag(event)}/>
+                     <MdCancel onClick={() => handleRemove(index)}/>
+                    </div>
+                  ))}
+                  <div className={style.boxUpload} onDrop={handleDrop} onDragOver={(event) => event.preventDefault()}>
+                    <AiFillFileAdd />
+                    <h3>Add Photos</h3>
+                    <input type="file"  onChange={handleFileInput}/>
+                  </div>
+              </div>:
+              <div className={style.boxUpload} onDrop={handleDrop} onDragOver={(event) => event.preventDefault()}>
+                  <AiFillFileAdd />
+                  <h3>Add Photos</h3>
+                  <span>or drag and drop</span>
+                  <input type="file"  onChange={handleFileInput}/>
+              </div>
+            }
+          </div> 
+          <Divider />
+         <div className={style.vehicle}>
+            <h3 className={style.title}>About this vehicle</h3>
+            <span className={style.span}>Help buyers know more about the vehicle that you're listing.</span>
+            <TextField 
+              className={style.TextField}
+              value={location}
+              id="outlined-basic"
+              label="Loacation"
+              variant="outlined"
+              InputProps={{
+                startAdornment: <InputAdornment position="start"><FaMapMarkerAlt /></InputAdornment>,
+              }}
+              onChange={(event) => setLocation(event.target.value)}
+              fullWidth
+            />
+            <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Year</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={year}
+              label="Year"
+              onChange={handleChangeYears}
+            >
+              {years.map(year =>
+                 <MenuItem
+                   key={year}
+                   value={year}
+                 >
+                  {year}
+                </MenuItem>
+              )}
+              
+            </Select>
+          </FormControl>
+          <TextField
+           id="outlined-basic"
+           label="Make"
+           variant="outlined"
+           value={make}
+           onChange={(event) => setMake(event.target.value)}
+           fullWidth
+          />
+          <TextField
+            id="outlined-basic"
+            label="Model"
+            variant="outlined"
+            value={model}
+            onChange={(event) => setModel(event.target.value)}
+            fullWidth
+          />
+         </div>
+         <Divider />
+         <div className={style.price}>
+            <h3 className={style.title}>Price</h3>
+            <span className={style.span}>Enter your price for this vehicle.</span>
+            <TextField
+              id="outlined-basic"
+              label="price"
+              variant="outlined"
+              onChange={(event) => setPrice(event.target.value)}
+              fullWidth
+            />
+         </div>
+         <Divider />
+         <div className={style.dcp}>
+            <h3 className={style.title}>Description</h3>
+            <span className={style.span}>Tell buyers anything that you haven't had the chance to include yet about your vehicle.</span>
+            <TextField
+              id="outlined-multiline-static"
+              label="Discription"
+              multiline
+              rows={4}
+              onChange={(event) => setDisc(event.target.value)}
+              fullWidth
+             />
+         </div>
+         <div className={style.option}>
+         <span>Optional</span>
+         <p>Marketplace items are public and can be seen by anyone on or off Facebook.
+           Items such as animals, drugs, weapons, counterfeits and other items that infringe intellectual
+            property aren't allowed on Marketplace.<span>See our Commerce Policies.</span> 
+         </p>
+         </div>
+         
+         </div>
+
+        
+         <div className={style.complet}>
+          <div className={style.checkComplet}>
+            <div className={style.barComplet}></div>
+            <div className={style.barComplet}></div>
+          </div>
+          <Divider />
+          <button className={style.btn} type="submit">Next</button>
+         </div>
+        </form>
+       </div>
+       <ViewCars 
+         title={type}
+         photo={images}
+         price={price}
+         year={year}
+         make={make}
+         model={model}
+         disc={disc}
+         location={location}
+        />
       </div>
     </>
   )
