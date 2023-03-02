@@ -5,6 +5,7 @@ import ViewCars from '@/component/viewCars'
 import {MdCancel} from 'react-icons/md'
 import {FaMapMarkerAlt} from 'react-icons/fa'
 import {BsFacebook} from "react-icons/bs"
+import {MdGroups,MdStorefront} from 'react-icons/md'
 import {GiWorld} from "react-icons/gi"
 import {AiFillFileAdd} from 'react-icons/ai'
 import InputLabel from '@mui/material/InputLabel';
@@ -20,14 +21,10 @@ import style from '../styles/car.module.css'
 import { makeStyles } from '@mui/styles'
 import FilledInput from '@mui/material/FilledInput';
 import InputAdornment from '@mui/material/InputAdornment';
+import Checkbox from '@mui/material/Checkbox';
+import { useRouter } from 'next/router'
 
-
-
-const useStyles = makeStyles((theme) => ({
-  label: {
-      color: 'rgba(255, 255, 255, 0.6) !important',
-  },
-}));
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const names = [
     'car/van',
     'Motorcycle',
@@ -47,26 +44,39 @@ const names = [
   createYears()
 
 export default function Car() {
+    const router = useRouter()
     const [type, setType] = useState('');
     const [images, setImages] = useState([]);
-    const [location, setLocation] = useState('');
+    const [location, setLocation] = useState('algeria');
     const [year, setYear] = useState('');
     const [make, setMake] = useState('');
     const [model, setModel] = useState('');
     const [price, setPrice] = useState('');
     const [disc, setDisc] = useState('');
     const [prod, setProd] = useState([]);
+    const [btn,setBtn] = useState(false);
+    const [submit,setSubmit] = useState(false);
 
-  const handleFileInput = (event) => {
-    const files = Array.from(event.target.files);
-    setImages([...images, ...files]);
-  }
 
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const files = Array.from(event.dataTransfer.files);
-    setImages([...images, ...files]);
-  }
+    const handleFileInput = (event) => {
+      const files = Array.from(event.target.files);
+      const reader = new FileReader();
+      reader.readAsDataURL(files[0]); // Only read the first file
+    
+      reader.onload = () => {
+        // Add the new image to the existing images
+        setImages([...images, {
+          url: reader.result,
+          alt: files[0].name
+        }]);
+      };
+    };
+
+    const handleDrop = (event) => {
+      event.preventDefault();
+      const files = Array.from(event.dataTransfer.files);
+      setImages([...images, ...files]);
+    }
 
   const handleRemove = (index) => {
     const newImages = [...images];
@@ -102,11 +112,42 @@ export default function Car() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      const data = {type, images,location, year,make, model, price, disc };
-      setProd(data);
-      localStorage.setItem('prod', JSON.stringify(data));
-      console.log(localStorage.getItem('prod'));
+      if(type && images && location && year && make && model && price && disc){
+        const existingProd = JSON.parse(localStorage.getItem('prod')) || [];
+        const newItem = {type, images,location, year,make, model, price, disc };
+        const updatedProd = [...existingProd, newItem]
+        localStorage.setItem('prod', JSON.stringify(updatedProd))
+        console.log(localStorage.getItem('prod'));
+        setSubmit(true)
+        router.push('/')
+      }else{
+        console.log("error");
+      }
     };
+
+    const prev = (event)=>{
+      event.preventDefault();
+      setSubmit(false)
+    }
+    const next = (event)=>{
+      event.preventDefault();
+      if(type && images && location && year && make && model && price && disc){
+        setSubmit(true)
+      }
+    }
+
+    function checkButton(){
+      if(type && images && location && year && make && model && price && disc){
+        setBtn(true)
+      }else{
+        setBtn(false)
+      }
+    }
+
+    useEffect(()=>{
+      checkButton()
+    })
+
 
   return (
     <>
@@ -116,7 +157,8 @@ export default function Car() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className={style.car}>
-       <div className={style.side}>
+        {!submit?
+        <div className={style.side}>
         <div className={style.head}>
           <div className={style.headSide}>
              <Link href="/">
@@ -141,7 +183,6 @@ export default function Car() {
             </div>
           </div>
         </div>
-        <form onSubmit={handleSubmit}>
         <div className={style.infSide}>
           <div className={style.user}>
           <Image
@@ -184,7 +225,7 @@ export default function Car() {
               <div className={style.imageAdd}>
                   {images.map((image, index) => (
                     <div className={style.img} id={index} key={index} onDrop={(event) => drop(event)} onDragOver={(event) => allowDrop(event)}>
-                     <img id={index} src={URL.createObjectURL(image)} alt="Uploaded Image" draggable="true" onDragStart={(event) => drag(event)}/>
+                     <img id={index} src={image.url} alt="Uploaded Image" draggable="true" onDragStart={(event) => drag(event)}/>
                      <MdCancel onClick={() => handleRemove(index)}/>
                     </div>
                   ))}
@@ -217,6 +258,7 @@ export default function Car() {
               }}
               onChange={(event) => setLocation(event.target.value)}
               fullWidth
+              required
             />
             <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Year</InputLabel>
@@ -263,6 +305,7 @@ export default function Car() {
               id="outlined-basic"
               label="price"
               variant="outlined"
+              value={price}
               onChange={(event) => setPrice(event.target.value)}
               fullWidth
             />
@@ -276,6 +319,7 @@ export default function Car() {
               label="Discription"
               multiline
               rows={4}
+              value={disc}
               onChange={(event) => setDisc(event.target.value)}
               fullWidth
              />
@@ -294,13 +338,63 @@ export default function Car() {
          <div className={style.complet}>
           <div className={style.checkComplet}>
             <div className={style.barComplet}></div>
+            <div className={style.emptyComplet}></div>
+          </div>
+          <Divider />
+          <button className={!btn ?style.btnDis:style.btnSubmit} onClick={next}>Next</button>
+         </div>
+        </div>:
+        <div className={style.side}>
+         <form onSubmit={handleSubmit}>
+          <div className={style.head}>            
+          <div className={style.headSide}>
+             <Link href="/">
+               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0 0 16 16">
+                 <path d="M 2.75 2.042969 L 2.042969 2.75 L 2.398438 3.101563 L 7.292969 8 L 2.042969 13.25 L 2.75 13.957031 L 8 8.707031 L 12.894531 13.605469 L 13.25 13.957031 L 13.957031 13.25 L 13.605469 12.894531 L 8.707031 8 L 13.957031 2.75 L 13.25 2.042969 L 8 7.292969 L 3.101563 2.398438 Z"></path>
+               </svg>
+             </Link>
+             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48">
+                <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993" x2="40.615" y1="9.993" y2="40.615" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#2aa4f4"></stop><stop offset="1" stopColor="#007ad9"></stop></linearGradient>
+                <path fill="url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)" d="M24,4C12.954,4,4,12.954,4,24s8.954,20,20,20s20-8.954,20-20S35.046,4,24,4z"></path>
+                <path fill="#fff" d="M26.707,29.301h5.176l0.813-5.258h-5.989v-2.874c0-2.184,0.714-4.121,2.757-4.121h3.283V12.46 c-0.577-0.078-1.797-0.248-4.102-0.248c-4.814,0-7.636,2.542-7.636,8.334v3.498H16.06v5.258h4.948v14.452 C21.988,43.9,22.981,44,24,44c0.921,0,1.82-0.084,2.707-0.204V29.301z"></path>
+             </svg>
+          </div>
+          <div className={style.save}>
+            <div className={style.leftSave}>
+              <span>Marketplace</span>
+              <h2>List in more places</h2>
+            </div>
+          </div>
+          </div>
+          <Divider />
+          <div className={style.listPubl}>
+            <h3>List publicly</h3>
+            <div className={style.publicty}>
+              <div className={style.icon}>
+                 <MdStorefront />
+              </div>
+              <div className={style.infPublicty}>
+                 <h4>Marketplace</h4>
+                 <p>Marketplace items are public and can be seen by anyone on or off Facebook</p>
+              </div>
+              <Checkbox {...label} disabled checked sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}/>
+            </div>
+          </div>
+          <div className={style.complet}>
+          <div className={style.checkComplet}>
+            <div className={style.barComplet}></div>
             <div className={style.barComplet}></div>
           </div>
           <Divider />
-          <button className={style.btn} type="submit">Next</button>
+          <div className={style.btns}>
+            <button className={style.btnPrev} onClick={prev}>Previous</button>
+            <button className={!btn ?style.btnDis:style.btnSubmit} type="submit">Publish</button>
+          </div>
          </div>
-        </form>
-       </div>
+         </form>
+        </div>
+        }
        <ViewCars 
          title={type}
          photo={images}

@@ -42,7 +42,7 @@ export default function ViewCars({title,photo,price,year,model,make,location,dis
               <Carousel autoFocus>
                 {image.map((p, i) => (
                  <div key={i} autoFocus>
-                   <img src={URL.createObjectURL(p)} alt={`slide ${i}`} />
+                   <img src={p.url} alt={`slide ${i}`} />
                  </div>
                ))}
               </Carousel>            

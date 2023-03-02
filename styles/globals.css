@@ -40,6 +40,9 @@ body{
   scrollbar-color: #505151 #171717;
   scrollbar-width: thin;
 }
+.MuiInputAdornment-root{
+  color: white !important;
+}
 .carousel-root {
   outline: none;
   height: 100% !important;

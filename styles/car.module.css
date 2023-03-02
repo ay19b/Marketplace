@@ -255,17 +255,31 @@
     height: 7px;
     border-radius: 10px;
 }
-.complet .checkComplet .barComplet:first-child{
+.complet .checkComplet .barComplet{
     background-color: #0882de;
 }
-.complet .checkComplet .barComplet:last-child{
+.complet .checkComplet .emptyComplet{
     background-color: #ffffff;
+    width: 48%;
+    height: 7px;
+    border-radius: 10px;
 }
 .complet hr{
     width: 100%;
-    border-color: rgb(136, 140, 142);
+    border-color: rgba(136, 140, 142,0.3);
 }
-.complet .btn{
+.complet .btnDis{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #505151;
+    border: none;
+    color: #848585;
+    cursor: no-drop;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+.complet .btnPrev{
     width: 100%;
     padding: 10px;
     font-size: 18px;
@@ -275,4 +289,70 @@
     cursor: pointer;
     border-radius: 8px;
     margin: 12px 0;
+}
+.complet .btnSubmit{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #0882de;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+
+/*published*/
+
+.side .listPubl{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 23rem;
+    scrollbar-color: #505151 transparent;
+    scrollbar-width: thin;
+    padding: 0 15px 0 15px;
+}
+.listPubl h3{
+    color: white;
+}
+.listPubl .publicty{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.publicty .icon{
+    background-color: #404040;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    flex: 0.1;
+}
+.publicty .icon svg{
+    padding: 8px;
+    font-size: 20px;
+    color: #dfe2e8;
+}
+.publicty .infPublicty{
+    flex: 0.7;
+}
+.publicty .infPublicty h4{
+    color: white;
+    margin-bottom: 2px;
+}
+.publicty .infPublicty p{
+    color: #96989c;
+}
+.publicty .MuiButtonBase-root{
+    flex: 0.1;
+    color: rgb(91, 86, 86);
+}
+.side .btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.side .btns button{
+    width: 48%;
 }
