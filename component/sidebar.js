@@ -12,6 +12,7 @@ import Link from 'next/link'
 export default function Sidebar() {
   return (
     <div className={style.sidebar}>
+      <div className={style.containerSide}>
         <div className={style.headSidebar}>
             <h1>Marketplace</h1>
             <RiSettings5Fill />
@@ -45,7 +46,7 @@ export default function Sidebar() {
         <Link href="/car">
            <button className={style.btn}>+ Create new listing</button>
         </Link>
-        
+      </div>  
     </div>
   )
 }

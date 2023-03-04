@@ -98,3 +98,6 @@ body{
   border-bottom: 10px solid transparent !important;
   margin: 0 4px 0 0 !important;
 }
+.carousel .carousel-status{
+  display: none !important;
+}

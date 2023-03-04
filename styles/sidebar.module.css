@@ -4,6 +4,9 @@
     height: 100%;
     background-color: var(--bg-color);
     padding: 0px 15px;
+    width: 20rem;
+}
+.containerSide{
     position: fixed;
     width: 20rem;
 }

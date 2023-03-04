@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import style from '../styles/content.module.css'
 import Profil from '../public/profile.jpg'
 import Image from 'next/image'
+import Link from 'next/link';
+
 
 export default function Store() {
   const [prod, setProd] = useState([]);
@@ -19,18 +21,20 @@ console.log(prod);
     <div className={style.store}>
       <h3>Today's picks</h3>
       <div className={style.products}>
-      {prod.map((p) => {
+      {prod.map((p,index) => {
           return (
-            <div className={style.product}>
+            <div className={style.product} key={index}>
+              <Link href={`/product/${index}`}>
               <Image
                src={p.images[0].url}
                alt=""
                width='40'
                height='40'
              />
-              <h4 className={style.price}>{p.price}</h4>
-              <h4 className={style.title}>a{p.make}</h4>
+              <h4 className={style.price}>DA{p.price}</h4>
+              <h4 className={style.title}>{p.make}</h4>
               <h5 className={style.location}>{p.location}</h5>
+              </Link>
             </div>
           )
         })}

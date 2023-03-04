@@ -1,6 +1,7 @@
 .store{
     flex: 0.75;
     padding: 16px;
+    background-color: #18191a;
 }
 .store h3{
     color: white;
@@ -15,6 +16,7 @@
     width: 30%;
     height: 28rem;
     margin-right: 32px;
+    cursor: pointer;
 }
 .store .product img{
     width: 100%;

@@ -1,0 +1,90 @@
+import React, { useState, useEffect,useContext } from "react";
+import style from '../styles/sideDetailProd.module.css'
+import { useRouter } from "next/router";
+import Head from 'next/head'
+import Divider from '@mui/material/Divider';
+import Slider from "@/component/carousel";
+import {CgMenuGridO} from 'react-icons/cg'
+import {RiMessengerFill} from "react-icons/ri"
+import Profil from '../public/profile.jpg'
+import Image from 'next/image'
+import {FaGamepad,FaBell} from 'react-icons/fa'
+import TextField from '@mui/material/TextField';
+
+
+export default function SideDetailProd() {
+  const mapStand = `https://maps.google.com/maps?q=algeria&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+  const [msg, setMsg] = useState('Bonjour, cet article est-il toujours disponible ?');
+  return (
+    <div className={style.sideDetailProd}>
+         <div className={style.side}>        
+          <div className={style.icons}>
+            <CgMenuGridO />
+            <RiMessengerFill />
+            <FaBell />
+            <Image
+              src={Profil}
+              alt="Picture of the author"
+              width={35}
+              height={35}
+            />
+            
+          </div>
+          <Divider />
+          <div className={style.prodInformation}>
+             <div className={style.Prod}>
+                 <h2>title</h2>
+                 <h3>price</h3>
+                 <span>Listed a few seconds ago in algeria</span>
+             </div>
+             <div className={style.map}>
+                   <div className={style.mapouter}>
+                     <div className={style.gmap_canvas}>
+                       <iframe width="370" height="150" id="gmap_canvas" src={mapStand} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
+                     </div>
+                   </div>
+                    <br></br>
+                   <span>algeria</span>
+                   <br></br>
+                   <h5>Location is approximate</h5>
+             </div>
+             <Divider />
+             <div className={style.sellerInfo}>
+                   <div className={style.titleSeller}>
+                     <h2>Seller information</h2>
+                     <span>Seller details</span>
+                   </div>
+                   <div className={style.userSeller}>
+                     <Image
+                       src={Profil}
+                       alt="Picture of the author"
+                       width={35}
+                       height={35}
+                      />
+                      <h4>John</h4>
+                    </div>
+             </div>
+          </div>
+          <div className={style.messanger}>
+            <div className={style.Iconmsg}>
+              <img src="https://img.icons8.com/fluency/48/null/facebook-messenger--v2.png"/>
+              <h4>Send seller a message</h4>
+            </div>
+            <TextField
+              id="outlined-multiline-static"
+              multiline
+              rows={1}
+              value={msg}
+              sx={{ '& .MuiTextField-root': {  margin: '8px 0px' } }}
+              onChange={(event) => setMsg(event.target.value)}
+              fullWidth
+             />
+             <div className={style.btn}>
+              <button>Send</button>
+             </div>
+          </div>
+          
+    </div>
+    </div>
+  )
+}

@@ -1,0 +1,21 @@
+.carousel{
+    flex: 0.7;
+}
+.carousel .headSide{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+.carousel .headSide svg{
+    font-size: 2.6rem;
+}
+.carousel .headSide a {
+    margin-top: 4px;
+}
+.carousel .headSide a svg{
+    background-color: black;
+    border-radius: 50%;
+    padding: 8px;
+    fill: white;
+}
