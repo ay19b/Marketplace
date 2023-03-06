@@ -12,9 +12,11 @@ import Divider from '@mui/material/Divider';
 import Profil from '../public/profile.jpg'
 import Image from 'next/image'
 import TextField from '@mui/material/TextField';
-import style from '../styles/car.module.css'
+import style from '../styles/create.module.css'
 import { makeStyles } from '@mui/styles'
 import ViewCars from './viewCars'
+import PropTypes from 'prop-types';
+import { NumericFormat } from 'react-number-format';
 
 const useStyles = makeStyles((theme) => ({
   label: {
@@ -40,7 +42,35 @@ const names = [
   }
   createYears()
 
-
+  const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
+    props,
+    ref,
+  ) {
+    const { onChange, ...other } = props;
+  
+    return (
+      <NumericFormat
+        {...other}
+        getInputRef={ref}
+        onValueChange={(values) => {
+          onChange({
+            target: {
+              name: props.name,
+              value: values.value,
+            },
+          });
+        }}
+        thousandSeparator
+        valueIsNumericString
+        prefix="$"
+      />
+    );
+  });
+  
+  NumericFormatCustom.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+  };
 export default function SidebarCars() {
     const classes = useStyles();
     const [type, setType] = useState('');
@@ -51,6 +81,16 @@ export default function SidebarCars() {
     const [model, setModel] = useState('');
     const [price, setPrice] = useState('');
     const [disc, setDisc] = useState('');
+    const [values, setValues] = React.useState({
+      numberformat: '1320',
+    });
+
+    const handleChange = (event) => {
+      setValues({
+        ...values,
+        [event.target.name]: event.target.value,
+      });
+    };
 
     const handleChangeTypes = (event) => {
       setType(event.target.value);
@@ -185,12 +225,16 @@ export default function SidebarCars() {
             <h3 className={style.title}>Price</h3>
             <span className={style.span}>Enter your price for this vehicle.</span>
             <TextField
-              id="outlined-basic"
-              label="price"
-              variant="outlined"
-              onChange={(event) => setPrice(event.target.value)}
-              fullWidth
-            />
+              label="react-number-format"
+              value={values.numberformat}
+              onChange={handleChange}
+              name="numberformat"
+              id="formatted-numberformat-input"
+              InputProps={{
+                inputComponent: NumericFormatCustom,
+              }}
+              variant="standard"
+           />
          </div>
          <Divider />
          <div className={style.dcp}>

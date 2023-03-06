@@ -14,7 +14,7 @@
     justify-content: space-between;
 }
 .navbar svg{
-    font-size: 28px;
+    font-size: 48px;
 }
 .navbar .first {
     flex: 0.2;
@@ -29,7 +29,7 @@
     background-color: #3a3b3c;
     border-radius: 50%;
     padding: 8px;
-    font-size: 22px;
+    font-size: 40px;
 }
 .navbar .second {
     flex: 0.5;
@@ -63,7 +63,7 @@
     background-color: #3a3b3c;
     border-radius: 50%;
     padding: 8px;
-    font-size: 22px;
+    font-size: 38px;
     cursor: pointer;
 }
 .third img{

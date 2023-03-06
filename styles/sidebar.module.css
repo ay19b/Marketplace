@@ -19,7 +19,7 @@
     margin-top: 8px;
 }
 .headSidebar svg{
-    font-size: 1.35rem;
+    font-size: 2.15rem;
     background-color: #3a3b3c;
     border-radius: 50%;
     padding: 6px;
@@ -42,7 +42,7 @@
 .input input{
     background-color: #3a3b3c;
     border: none;
-    width: 86%;
+    width: 100%;
     position: absolute;
     padding: 10px 0px 10px 32px;
     border-radius: 18px;
@@ -80,7 +80,7 @@
     background-color: #3a3b3c;
     border-radius: 50%;
     padding: 6px;
-    font-size: 18px;
+    font-size: 35px;
     cursor: pointer;
     color: white;
     margin-right: 12px;

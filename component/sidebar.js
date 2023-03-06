@@ -43,7 +43,7 @@ export default function Sidebar() {
              <h3>Selling</h3>
            </div>
         </div>
-        <Link href="/car">
+        <Link href="/create">
            <button className={style.btn}>+ Create new listing</button>
         </Link>
       </div>  

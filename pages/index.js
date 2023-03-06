@@ -1,10 +1,11 @@
+import React from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
 import { Content, Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
-import Navbar from '@/component/navbar'
-import Sidebar from '@/component/sidebar'
-import Store from '@/component/content'
+import styles from '../styles/Home.module.css'
+import Navbar from '../component/navbar'
+import Sidebar from '../component/sidebar'
+import Store from '../component/content'
 import {SiFacebook} from 'react-icons/si'
 
 

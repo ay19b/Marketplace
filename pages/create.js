@@ -17,13 +17,15 @@ import Divider from '@mui/material/Divider';
 import Profil from '../public/profile.jpg'
 import Image from 'next/image'
 import TextField from '@mui/material/TextField';
-import style from '../styles/car.module.css'
+import style from '../styles/create.module.css'
 import { makeStyles } from '@mui/styles'
 import FilledInput from '@mui/material/FilledInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import Checkbox from '@mui/material/Checkbox';
 import { useRouter } from 'next/router'
 import uuid from 'react-uuid';
+import PropTypes from 'prop-types';
+import { NumericFormat } from 'react-number-format';
 
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -49,9 +51,39 @@ const names = [
       years.push(i)          
     }
   }
-  createYears()
+  createYears();
 
-export default function Car() {
+  const NumericFormatCustom = React.forwardRef(function NumericFormatCustom(
+    props,
+    ref,
+  ) {
+    const { onChange, ...other } = props;
+  
+    return (
+      <NumericFormat
+        {...other}
+        getInputRef={ref}
+        onValueChange={(values) => {
+          onChange({
+            target: {
+              name: props.name,
+              value: values.value,
+            },
+          });
+        }}
+        thousandSeparator
+        valueIsNumericString
+        prefix="DA "
+      />
+    );
+  });
+  
+  NumericFormatCustom.propTypes = {
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+  };
+
+export default function Create() {
     const router = useRouter()
     const [type, setType] = useState('');
     const [images, setImages] = useState([]);
@@ -66,6 +98,16 @@ export default function Car() {
     const [submit,setSubmit] = useState(false);
     const id = uuid();
     const [selectedSlideIndex, setSelectedSlideIndex] = useState(0);
+    const [values, setValues] = React.useState({
+      numberformat: '',
+    });
+
+    const handleChange = (event) => {
+      setValues({
+        ...values,
+        [event.target.name]: event.target.value,
+      });
+    };
 
     const handleFileInput = (event) => {
       const files = Array.from(event.target.files);
@@ -309,13 +351,17 @@ export default function Car() {
             <h3 className={style.title}>Price</h3>
             <span className={style.span}>Enter your price for this item.</span>
             <TextField
-              id="outlined-basic"
               label="price"
-              variant="outlined"
               value={price}
               onChange={(event) => setPrice(event.target.value)}
+              name="numberformat"
+              id="outlined-basic"
+              InputProps={{
+                inputComponent: NumericFormatCustom,
+              }}
+              variant="outlined"
               fullWidth
-            />
+           />
          </div>
          <Divider />
          <div className={style.dcp}>
