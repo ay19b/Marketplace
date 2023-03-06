@@ -16,18 +16,18 @@ import SideDetailProd from "@/component/sideDetailProd";
 
 export default function DetailProd() {
     const router = useRouter();
-  const { id } = router.query;
-  const [prod, setProd] = useState([]);
-
+    const { id } = router.query;
+    const [prod, setProd] = useState('');
+   
   useEffect(() => {
     const storedProd = JSON.parse(localStorage.getItem('prod'));
     const product = storedProd.find((product) => product.id === id);
-    setProd(product);
+    if (product) {
+      setProd(product);
+    }
   }, [id]);
 
-
-
-console.log(prod);
+  console.log(prod);
   return (
     <>
       <Head>
@@ -36,8 +36,8 @@ console.log(prod);
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
     <div className={style.detailProd} >
-     <Slider location={prod.location}/> 
-     <SideDetailProd />
+     <Slider location={prod.location} image={prod.images}/> 
+     <SideDetailProd title={prod.title} location={prod.location} price={prod.price} condition={prod.condition} disc={prod.disc}/>
     </div>
     </>
   )

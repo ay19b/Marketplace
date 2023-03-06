@@ -23,8 +23,8 @@ console.log(prod);
       <div className={style.products}>
       {prod.map((p,index) => {
           return (
-            <div className={style.product} key={index}>
-              <Link href={`/product/${index}`}>
+            <div className={style.product} key={p.id}>
+              <Link href={`/product/${p.id}`}>
               <Image
                src={p.images[0].url}
                alt=""
@@ -32,7 +32,7 @@ console.log(prod);
                height='40'
              />
               <h4 className={style.price}>DA{p.price}</h4>
-              <h4 className={style.title}>{p.make}</h4>
+              <h4 className={style.title}>{p.title}</h4>
               <h5 className={style.location}>{p.location}</h5>
               </Link>
             </div>

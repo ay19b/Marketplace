@@ -15,7 +15,7 @@ body{
   font-family: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
 }
 .MuiTextField-root{
-   margin: 15px 0px;
+  margin: 15px 0px;
 }
 .MuiMenu-list{
   background-color: #171717;
@@ -61,6 +61,23 @@ body{
 .carousel .thumb{
   border: none !important;
 }
+.viewContent .carousel .thumbs.animated{
+  position: absolute !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+.carousel .carousel .thumbs.animated{
+  bottom: 3rem !important;
+  position: absolute !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
 .carousel .thumb,
 .carousel .thumb.selected{
   width: 60px !important;
@@ -100,4 +117,8 @@ body{
 }
 .carousel .carousel-status{
   display: none !important;
+}
+
+MuiButtonBase-root-MuiCheckbox-root.Mui-disabled {
+  color: rgba(255, 255, 255, 0.26) !important;
 }

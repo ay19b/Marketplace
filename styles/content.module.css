@@ -1,21 +1,21 @@
 .store{
     flex: 0.75;
-    padding: 16px;
+    padding: 20px 28px;
     background-color: #18191a;
 }
 .store h3{
-    color: white;
+    color: #e4e6eb;
     margin-bottom: 18px;
+    font-weight: 900;
 }
 .store .products {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
 }
 .store .product {
-    width: 30%;
-    height: 28rem;
-    margin-right: 32px;
+    height: 27rem;
     cursor: pointer;
 }
 .store .product img{

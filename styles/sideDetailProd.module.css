@@ -76,6 +76,17 @@
 .prodInformation h5{
     color: #888c8e;
 }
+.prodInformation .condition{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin: 8px 0;
+}
+.prodInformation .disc{
+    margin-bottom: 8px;
+    color: white;
+}
 .messanger{
     position: sticky;
     bottom: 0;
@@ -88,6 +99,7 @@
     align-items: center;
     padding: 4px 0;
 }
+
 .Iconmsg img{
     width: 1.8rem;
     margin-right: 10px;
@@ -95,7 +107,7 @@
 .Iconmsg h4{
     color: white;
 }
-.messanger .MuiTextField-root{
+.MuiTextField-root{
     margin: 5px 0px !important;
 }
 .messanger .btn button{

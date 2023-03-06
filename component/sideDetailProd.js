@@ -12,7 +12,8 @@ import {FaGamepad,FaBell} from 'react-icons/fa'
 import TextField from '@mui/material/TextField';
 
 
-export default function SideDetailProd() {
+export default function SideDetailProd({title,location,price,condition,disc}) {
+  const mapSrc = `https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
   const mapStand = `https://maps.google.com/maps?q=algeria&t=&z=13&ie=UTF8&iwloc=&output=embed`;
   const [msg, setMsg] = useState('Bonjour, cet article est-il toujours disponible ?');
   return (
@@ -33,18 +34,23 @@ export default function SideDetailProd() {
           <Divider />
           <div className={style.prodInformation}>
              <div className={style.Prod}>
-                 <h2>title</h2>
-                 <h3>price</h3>
-                 <span>Listed a few seconds ago in algeria</span>
+                 <h2>{title}</h2>
+                 <h3>DA {price}</h3>
+                 <span>Listed a few seconds ago in {location}</span>
              </div>
+             <div className={style.condition}>
+                <span>condition</span>
+                <span>{condition}</span>
+             </div>
+             <p className={style.disc}>{disc}</p>
              <div className={style.map}>
                    <div className={style.mapouter}>
                      <div className={style.gmap_canvas}>
-                       <iframe width="370" height="150" id="gmap_canvas" src={mapStand} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
+                       <iframe width="370" height="150" id="gmap_canvas" src={location?mapSrc:mapStand} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
                      </div>
                    </div>
                     <br></br>
-                   <span>algeria</span>
+                   <span>{location}</span>
                    <br></br>
                    <h5>Location is approximate</h5>
              </div>

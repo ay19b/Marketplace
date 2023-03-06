@@ -10,10 +10,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 
 
-export default function ViewCars({title,photo,price,year,model,make,location,disc}) {
+export default function ViewCars({title,photo,price,location,disc,selected,setSelected}) {
   const mapSrc = `https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
   const mapStand = `https://maps.google.com/maps?q=algeria&t=&z=13&ie=UTF8&iwloc=&output=embed`;
   const [image, setImage] = useState([]);
+
 
   useEffect(() => {
     setImage(photo);
@@ -39,7 +40,8 @@ export default function ViewCars({title,photo,price,year,model,make,location,dis
             <div className={style.leftInfoView}>
              {photo.length>0?
                 
-              <Carousel autoFocus>
+              <Carousel showThumbs={image.length>1? true:false} selectedItem={selected}
+              onChange={setSelected}>
                 {image.map((p, i) => (
                  <div key={i} autoFocus>
                    <img src={p.url} alt={`slide ${i}`} />
@@ -55,7 +57,7 @@ export default function ViewCars({title,photo,price,year,model,make,location,dis
            <div className={style.rightInfoView}>
             <div className={style.container}>
              <div className={style.infoContainer}>
-              <h2>{year || model || make ? `${year} ${make} ${model}`:'title'}</h2>
+              <h2>{ title ? `${title}`:'title'}</h2>
               <h3>{price?price+' '+'DA':'price'}</h3>
               <span>Listed a few seconds ago in {location?location:'algeria'}</span>
               <Divider />

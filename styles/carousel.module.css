@@ -1,11 +1,16 @@
 .carousel{
     flex: 0.7;
+    position: relative;
 }
 .carousel .headSide{
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 24px;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    margin-left: 12px;
 }
 .carousel .headSide svg{
     font-size: 2.6rem;
@@ -18,4 +23,33 @@
     border-radius: 50%;
     padding: 8px;
     fill: white;
+}
+.carousel .slider{
+   position: absolute;
+   top: 0;
+   width: 100%;
+}
+.carousel .slider .BackImg{
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    filter: blur(20px);
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.5); 
+    position: absolute;
+}
+.carousel .slider img{
+    width: 60% !important;
+    height: 70% !important;
+    margin-top: 60px !important;
+    z-index: 100;
+    position: inherit;
+}
+.carousel .carousel.carousel-slider .slider-wrapper .slider .slide img{
+    
+}
+.carousel .carousel .thumb.selected img{
+    width: 100% !important;
+    height: 100% !important;
 }

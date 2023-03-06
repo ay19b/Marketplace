@@ -23,17 +23,25 @@ import FilledInput from '@mui/material/FilledInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import Checkbox from '@mui/material/Checkbox';
 import { useRouter } from 'next/router'
+import uuid from 'react-uuid';
+
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const names = [
-    'car/van',
-    'Motorcycle',
-    'Power sport',
-    'Motorhome/caravan',
-    'Trailer',
-    'Boat',
-    'Commercial/Industrial',
-    'Other',
+    'Home & garden',
+    'Entertainment',
+    'Clothing & accessories',
+    'Family',
+    'Electronics',
+    'Hobbies',
+    'Classifieds',
+    'Vehicles',
+  ];
+  const cond = [
+    'New',
+    'Used - like new',
+    'Used - good',
+    'Used - fair',
   ];
   const years=[];
   function createYears(){
@@ -48,15 +56,16 @@ export default function Car() {
     const [type, setType] = useState('');
     const [images, setImages] = useState([]);
     const [location, setLocation] = useState('algeria');
-    const [year, setYear] = useState('');
-    const [make, setMake] = useState('');
+    const [condition, setCondition] = useState('');
+    const [title, setTitle] = useState('');
     const [model, setModel] = useState('');
     const [price, setPrice] = useState('');
     const [disc, setDisc] = useState('');
     const [prod, setProd] = useState([]);
     const [btn,setBtn] = useState(false);
     const [submit,setSubmit] = useState(false);
-
+    const id = uuid();
+    const [selectedSlideIndex, setSelectedSlideIndex] = useState(0);
 
     const handleFileInput = (event) => {
       const files = Array.from(event.target.files);
@@ -78,17 +87,23 @@ export default function Car() {
       setImages([...images, ...files]);
     }
 
-  const handleRemove = (index) => {
-    const newImages = [...images];
-    newImages.splice(index, 1);
-    setImages(newImages);
-  }
+    const handleRemove = (index) => {
+      const newImages = [...images];
+      newImages.splice(index, 1);
+      setImages(newImages);
+      let nextSlideIndex = selectedSlideIndex;
+      if (nextSlideIndex === newImages.length) {
+       nextSlideIndex -= 1;
+      }
+
+      setSelectedSlideIndex(nextSlideIndex);
+    }
     
     const handleChangeTypes = (event) => {
       setType(event.target.value);
     };
     const handleChangeYears = (event) => {
-      setYear(event.target.value);
+      setCondition(event.target.value);
     };
 
     function allowDrop(event) {
@@ -112,9 +127,9 @@ export default function Car() {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      if(type && images && location && year && make && model && price && disc){
+      if(type && images && location && condition && title && price && disc){
         const existingProd = JSON.parse(localStorage.getItem('prod')) || [];
-        const newItem = {type, images,location, year,make, model, price, disc };
+        const newItem = {id,type, images,location, condition,title, price, disc };
         const updatedProd = [...existingProd, newItem]
         localStorage.setItem('prod', JSON.stringify(updatedProd))
         console.log(localStorage.getItem('prod'));
@@ -131,13 +146,13 @@ export default function Car() {
     }
     const next = (event)=>{
       event.preventDefault();
-      if(type && images && location && year && make && model && price && disc){
+      if(type && images && location && condition && title && price && disc){
         setSubmit(true)
       }
     }
 
     function checkButton(){
-      if(type && images && location && year && make && model && price && disc){
+      if(type && images && location && condition && title && price && disc){
         setBtn(true)
       }else{
         setBtn(false)
@@ -176,7 +191,7 @@ export default function Car() {
           <div className={style.save}>
             <div className={style.leftSave}>
               <span>Marketplace</span>
-              <h2>Vehicle for sale</h2>
+              <h2>Item for sale</h2>
             </div>
             <div className={style.rightSave}>
               <button>Save Draft</button> 
@@ -198,12 +213,12 @@ export default function Car() {
           </div>
 
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">vehicle type</InputLabel>
+            <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={type}
-              label="vehicle type"
+              label="Category"
               onChange={handleChangeTypes}
             >
               {names.map((name) => (
@@ -245,8 +260,16 @@ export default function Car() {
           </div> 
           <Divider />
          <div className={style.vehicle}>
-            <h3 className={style.title}>About this vehicle</h3>
-            <span className={style.span}>Help buyers know more about the vehicle that you're listing.</span>
+            <h3 className={style.title}>About this item</h3>
+            <span className={style.span}>Help buyers know more about the item that you're listing.</span>
+            <TextField
+              id="outlined-basic"
+              label="title"
+              variant="outlined"
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+              fullWidth
+            />
             <TextField 
               className={style.TextField}
               value={location}
@@ -258,49 +281,33 @@ export default function Car() {
               }}
               onChange={(event) => setLocation(event.target.value)}
               fullWidth
-              required
             />
             <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Year</InputLabel>
+            <InputLabel id="demo-simple-select-label">Condition</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={year}
-              label="Year"
+              value={condition}
+              label="Condition"
               onChange={handleChangeYears}
             >
-              {years.map(year =>
-                 <MenuItem
-                   key={year}
-                   value={year}
-                 >
-                  {year}
-                </MenuItem>
-              )}
+              {cond.map((name) => (
+              <MenuItem
+                key={name}
+                value={name}
+               >
+              {name}
+            </MenuItem>
+          ))} 
               
             </Select>
           </FormControl>
-          <TextField
-           id="outlined-basic"
-           label="Make"
-           variant="outlined"
-           value={make}
-           onChange={(event) => setMake(event.target.value)}
-           fullWidth
-          />
-          <TextField
-            id="outlined-basic"
-            label="Model"
-            variant="outlined"
-            value={model}
-            onChange={(event) => setModel(event.target.value)}
-            fullWidth
-          />
+          
          </div>
          <Divider />
          <div className={style.price}>
             <h3 className={style.title}>Price</h3>
-            <span className={style.span}>Enter your price for this vehicle.</span>
+            <span className={style.span}>Enter your price for this item.</span>
             <TextField
               id="outlined-basic"
               label="price"
@@ -313,7 +320,7 @@ export default function Car() {
          <Divider />
          <div className={style.dcp}>
             <h3 className={style.title}>Description</h3>
-            <span className={style.span}>Tell buyers anything that you haven't had the chance to include yet about your vehicle.</span>
+            <span className={style.span}>Tell buyers anything that you haven't had the chance to include yet about your item.</span>
             <TextField
               id="outlined-multiline-static"
               label="Discription"
@@ -396,12 +403,12 @@ export default function Car() {
         </div>
         }
        <ViewCars 
-         title={type}
+         selected={selectedSlideIndex}
+         setSelected={setSelectedSlideIndex}
+         title={title}
          photo={images}
          price={price}
-         year={year}
-         make={make}
-         model={model}
+         make={title}
          disc={disc}
          location={location}
         />
