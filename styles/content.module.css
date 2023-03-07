@@ -21,7 +21,7 @@
 .store .product img{
     width: 100%;
     height: 70%;
-    object-fit: cover;
+    
     border-radius: 10px;
 }
 .store .product .price{
@@ -31,4 +31,42 @@
 .store .product .location{
     color: white;
     direction: rtl;
+}
+@media only screen and (max-width: 900px) {
+    .store {
+        width: 100%;
+    }
+    .store .product{
+        height: 20rem;
+        cursor: pointer;
+        width: 32%;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .store .product{
+        height: 23rem;
+        cursor: pointer;
+        width: 48%;
+    }
+}
+@media only screen and (max-width: 610px) {
+    .store .product{
+        height: 18rem;
+        cursor: pointer;
+        width: 32%;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .store .product{
+        height: 18rem;
+        cursor: pointer;
+        width: 48%;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .store .product{
+        height: 18rem;
+        cursor: pointer;
+        width: 100%;
+    }
 }

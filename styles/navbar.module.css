@@ -5,6 +5,7 @@
     background-color: var(--bg-color);
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 .navbar .container{
     width: 99%;
@@ -30,6 +31,10 @@
     border-radius: 50%;
     padding: 8px;
     font-size: 40px;
+    cursor: pointer;
+}
+.first svg:nth-child(2):hover{
+    background-color: #4d4e50;
 }
 .navbar .second {
     flex: 0.5;
@@ -55,9 +60,9 @@
     border-radius: 0px;
 }
 .navbar .third{
-    flex: 0.2;
+    flex: 0.3 1;
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
 }
 .third svg{
     background-color: #3a3b3c;
@@ -65,7 +70,22 @@
     padding: 8px;
     font-size: 38px;
     cursor: pointer;
+    margin-right: 18px;
+}
+.third svg:hover{
+    background-color: #4d4e50;
 }
 .third img{
     border-radius: 50%;
+}
+
+@media only screen and (max-width: 720px) {
+    .navbar .second {
+        justify-content: flex-start;
+    }
+    .second svg{
+        padding: 0;
+        font-size: 38px;
+        flex: none;
+    }
 }

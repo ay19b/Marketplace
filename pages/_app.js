@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from '@mui/styles';
+import { StylesProvider,ThemeProvider } from '@mui/styles';
 import CssBaseline from '@mui/material/CssBaseline'
 import theme from '../src/theme'
 import PropTypes from 'prop-types';
@@ -14,12 +14,14 @@ const clientSideEmotionCache = createEmotionCache();
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   return (
-    <CacheProvider value={emotionCache}>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </ThemeProvider>
-    </CacheProvider>
+    <StylesProvider injectFirst>
+      <CacheProvider value={emotionCache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+      </CacheProvider>
+    </StylesProvider>
   );
 }
 

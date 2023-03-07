@@ -27,7 +27,6 @@ import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
 import { NumericFormat } from 'react-number-format';
 
-
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const names = [
     'Home & garden',
@@ -311,9 +310,10 @@ export default function Create() {
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               fullWidth
+            
             />
             <TextField 
-              className={style.TextField}
+            
               value={location}
               id="outlined-basic"
               label="Loacation"
@@ -361,6 +361,7 @@ export default function Create() {
               }}
               variant="outlined"
               fullWidth
+            
            />
          </div>
          <Divider />
@@ -375,6 +376,7 @@ export default function Create() {
               value={disc}
               onChange={(event) => setDisc(event.target.value)}
               fullWidth
+            
              />
          </div>
          <div className={style.option}>

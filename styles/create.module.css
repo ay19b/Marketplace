@@ -195,13 +195,9 @@
 .MuiFormLabel{
     color: white !important;
 }
-.vehicle div{
-
-}
 .vehicle .TextField label{
     color: rgba(255, 255, 255, 0.6) !important;
 }
-
 .price{
     margin-top: 10px;
 }

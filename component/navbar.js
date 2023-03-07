@@ -1,17 +1,21 @@
 import React from 'react'
 import style from '../styles/navbar.module.css'
 import {BsFacebook} from "react-icons/bs"
-import {BiSearchAlt2} from "react-icons/bi"
+import {BiSearchAlt2,BiMenu} from "react-icons/bi"
 import {AiOutlineHome,AiOutlineYoutube} from 'react-icons/ai'
 import {FaGamepad,FaBell} from 'react-icons/fa'
-import {MdGroups,MdStorefront} from 'react-icons/md'
+import {MdGroups,MdStorefront,MdOutlineAdd} from 'react-icons/md'
 import {CgMenuGridO} from 'react-icons/cg'
 import {RiMessengerFill} from "react-icons/ri"
 import {IoLogoGameControllerA} from "react-icons/io"
 import Profil from '../public/profile.jpg'
 import Image from 'next/image'
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Link from 'next/link'
 
 export default function Navbar() {
+  const matches = useMediaQuery('(max-width:900px)');
+  const menu = useMediaQuery('(max-width:720px)');
   return (
     <div className={style.navbar}>
       <div className={style.container}>
@@ -25,14 +29,23 @@ export default function Navbar() {
             <BiSearchAlt2 />
         </div>
         <div className={style.second}>
+        {menu?<BiMenu />:
+            <>
             <AiOutlineHome />
             <AiOutlineYoutube />
             <MdStorefront className={style.active}/>
             <MdGroups />
             <IoLogoGameControllerA />
+            </>
+          }
         </div>
         <div className={style.third}>
-            <CgMenuGridO />
+            {matches?
+             <Link href="/create">
+              <MdOutlineAdd/>
+             </Link>
+             :<CgMenuGridO />
+            }
             <RiMessengerFill />
             <FaBell />
             <Image

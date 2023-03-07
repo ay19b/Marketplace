@@ -6,6 +6,7 @@ import {AiOutlineShop,AiFillBell,AiOutlineShopping} from 'react-icons/ai'
 import {BsInboxFill} from 'react-icons/bs'
 import {MdSell} from 'react-icons/md'
 import {GiShoppingBag} from 'react-icons/gi'
+import {HiUser} from "react-icons/hi"
 import Link from 'next/link'
 
 
@@ -16,6 +17,11 @@ export default function Sidebar() {
         <div className={style.headSidebar}>
             <h1>Marketplace</h1>
             <RiSettings5Fill />
+        </div>
+        <div className={style.iconhelp}>
+          <HiUser />
+          <h4>Sell</h4>
+          <h4>All Categories</h4>
         </div>
         <div className={style.input}>
             <BiSearchAlt2 />
