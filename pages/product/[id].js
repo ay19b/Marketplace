@@ -12,8 +12,9 @@ import {RiMessengerFill} from "react-icons/ri"
 import Profil from '../../public/profile.jpg'
 import Image from 'next/image'
 import {FaGamepad,FaBell} from 'react-icons/fa'
-import SideDetailProd from "@/component/sideDetailProd";
 import useMediaQuery from '@mui/material/useMediaQuery';
+import SideDetailProd from "@/component/sideDetailProd";
+
 
 export default function DetailProd() {
     const matches = useMediaQuery('(max-width:900px)');
