@@ -18,7 +18,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className={styles.marketplace}>
-        <Navbar />
+        <Navbar iconCancel='false'/>
         <div className={styles.home}>
           <Sidebar />
           <Store />

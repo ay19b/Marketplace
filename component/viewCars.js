@@ -5,10 +5,9 @@ import {RiMessengerFill} from "react-icons/ri"
 import Profil from '../public/profile.jpg'
 import Image from 'next/image'
 import style from '../styles/view.module.css'
-import Divider from '@mui/material/Divider';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import Divider from '@mui/material/Divider'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export default function ViewCars({title,photo,price,location,disc,selected,setSelected}) {
   const mapSrc = `https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
@@ -23,16 +22,6 @@ export default function ViewCars({title,photo,price,location,disc,selected,setSe
   return (
     <div className={style.view}>
       <div className={style.container}>
-       <div className={style.icons}>
-            <CgMenuGridO />
-            <FaBell />
-            <Image
-              src={Profil}
-              alt="Picture of the author"
-              width={35}
-              height={35}
-            />
-       </div>
        <div className={style.viewContent}>
          <h4 className={style.title}>Preview</h4>
          <div className={style.infoView}>
@@ -40,10 +29,13 @@ export default function ViewCars({title,photo,price,location,disc,selected,setSe
             <div className={style.leftInfoView}>
              {photo.length>0?
                 
-              <Carousel showThumbs={image.length>1? true:false} selectedItem={selected}
-              onChange={setSelected}>
+              <Carousel 
+                showThumbs={image.length>1? true:false}
+                selectedItem={selected}
+                onChange={setSelected}
+                className={style.carousel}>
                 {image.map((p, i) => (
-                 <div key={i} autoFocus>
+                 <div key={i} autoFocus className={style.item}>
                    <img src={p.url} alt={`slide ${i}`} />
                  </div>
                ))}

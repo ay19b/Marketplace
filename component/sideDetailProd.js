@@ -19,19 +19,6 @@ export default function SideDetailProd({title,location,price,condition,disc}) {
   return (
     <div className={style.sideDetailProd}>
          <div className={style.side}>        
-          <div className={style.icons}>
-            <CgMenuGridO />
-            <RiMessengerFill />
-            <FaBell />
-            <Image
-              src={Profil}
-              alt="Picture of the author"
-              width={35}
-              height={35}
-            />
-            
-          </div>
-          <Divider />
           <div className={style.prodInformation}>
              <div className={style.Prod}>
                  <h2>{title}</h2>

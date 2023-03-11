@@ -1,9 +1,10 @@
 .view{
-    width: 73%;
+    width: 72%;
     background-color: #18191a;;
 }
 .view .container{
     width: 95%;
+    height: 100%;
     margin: auto;
 }
 .view hr{
@@ -34,11 +35,11 @@
 }
 
 .view .viewContent{
-    width: 96%;
+    width: 57rem;
     background-color: #242526;
     height: 30rem;
     border-radius: 8px;
-    margin-top: 10px;
+    margin: 30px auto 0 auto;
     padding: 14px;
 }
 .viewContent h4{
@@ -117,16 +118,17 @@
 .rightInfoView .infoContainer{
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 22rem;
+    height: 80%;
+    margin-bottom: 20px;
     scrollbar-color: #505151 transparent;
     scrollbar-width: thin;
 }
 .rightInfoView .btnMsg{
-    position: fixed;
-    bottom: 75px;
+    position: sticky;
+    bottom: 8px;
     background-color: #242526;
-    width: 27%;
-    height: 3rem;
+    width: 100%;
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,4 +144,33 @@
     cursor: pointer;
     border-radius: 8px;
     margin: 15px 0;
+}
+
+.leftInfoView .carousel{
+    width: 100% !important;
+    height: 100% !important;
+}
+.leftInfoView .carousel div:nth-child(1){
+    height: 100% !important;
+}
+.carousel .thumbs{
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+}
+.carousel .item img{
+    width: 85% !important;
+    height: 90% !important;
+    margin-top: 15px !important;
+}  
+@media only screen and (max-width: 1350px) {
+    .view .viewContent{
+        width: 96%;
+        margin-top: 10px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .view{
+        display: none;
+    }
 }

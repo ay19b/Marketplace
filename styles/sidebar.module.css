@@ -1,10 +1,9 @@
 .sidebar{
-    flex: 0.25;
     border-right: 0.1px solid rgba(253, 253, 253, 0.2);
     height: auto;
     background-color: var(--bg-color);
     padding: 0px 15px;
-    width: 20rem;
+    width: 24rem;
 }
 .containerSide{
     position: sticky;

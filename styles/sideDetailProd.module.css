@@ -5,6 +5,7 @@
     background-color: #242526;
     border-right: 0.1px solid rgba(253, 253, 253, 0.2);
     height: 100%;
+    padding-top: 61px;
 }
 .side hr{
     width: 100%;
@@ -120,4 +121,16 @@
     cursor: pointer;
     border-radius: 8px;
     margin: 12px 0;
+}
+@media only screen and (max-width: 900px) {
+    .side{
+        padding-top: 35px;
+    }
+    .prodInformation{
+        overflow-y: visible;
+        height: 100%;
+    }
+    .messanger{
+        position: relative;
+    }
 }

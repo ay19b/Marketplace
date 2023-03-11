@@ -49,14 +49,23 @@ body{
   width: 100% !important;
 }
 .carousel.carousel-slider{
-  height: 85% !important;
+  height: 100% !important;
 }
-.carousel .slide img {
-  width: 88% !important;
-  margin-top: 20px !important;
+.carousel .slider-wrapper{
+  height: 100% !important;
 }
+.carousel .slider-wrapper.axis-horizontal .slider{
+  height: 100% !important;
+}
+
 .carousel .thumbs-wrapper {
   margin: 8px !important;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 4px;
 }
 .carousel .thumb{
   border: none !important;
@@ -82,13 +91,14 @@ body{
 .carousel .thumb.selected{
   width: 60px !important;
   height: 3rem !important;
+  opacity: 0.6;
+  border-radius: 6px;
 }
 .carousel .thumb.selected{
   border: 3px solid #a8a0a0 !important;
+  opacity: 1;
 }
-.carousel .control-dots{
-  display: none;
-}
+
 
 .carousel.carousel-slider .control-arrow{
   padding: 5px !important;
@@ -97,23 +107,33 @@ body{
   border-radius: 50% !important;
   top: 50% !important;
   opacity: 1 !important;
-  background-color: white !important;
+  background-color: #242526 !important;
   margin:0px 8px;
 }
 .carousel .control-prev.control-arrow::before{
-  border-right: 8px solid #020202 !important;
+  border-right: 8px solid #ffffff !important;
 }
 .carousel .control-next.control-arrow::before{
-  border-left: 10px solid #7e8284 !important;
-  margin: 0 16px !important;
-  border-top: 10px solid transparent !important;
-  border-bottom: 10px solid transparent !important;
+  width: 18px;
+  height: 18px;
+  content: '';
+  transform: rotate(50deg);
+  border-top: 2px solid #fff !important;
+  border-right: 2px solid white !important;
+  border-left: none !important;
+  border-bottom: none !important;
+  margin-right: 12px !important;
 }
 .carousel .control-prev.control-arrow::before{
-  border-right: 10px solid #7e8284 !important;
-  border-top: 10px solid transparent !important;
-  border-bottom: 10px solid transparent !important;
-  margin: 0 4px 0 0 !important;
+  width: 18px !important;
+  height: 18px !important;
+  content: '';
+  transform: rotate(50deg);
+  border-top: none !important;
+  border-bottom: 2px solid #fff !important;
+  border-left: 2px solid white !important;
+  border-right: none !important;
+  margin-left: 12px !important;
 }
 .carousel .carousel-status{
   display: none !important;
@@ -121,4 +141,26 @@ body{
 
 .MuiButtonBase-root-MuiCheckbox-root.Mui-disabled {
   color: rgba(255, 255, 255, 0.26) !important;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+  .carousel.carousel-slider {
+     height: 30rem !important;
+   }
+   .control-arrow{
+    display: none;
+   }
+}
+@media only screen and (max-width: 600px) {
+  .carousel.carousel-slider {
+     height: 24rem !important;
+   }
+   .carousel_item__Kf8pY img {
+    height: 65% !important;
+   }
+   .carousel .thumbs-wrapper{
+     bottom: -5px;
+   }
 }

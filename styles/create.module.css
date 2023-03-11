@@ -1,14 +1,16 @@
-.car{
-    display: flex;
+.create{
     height: 100vh;
     overflow: hidden;
+}
+.car{
+    display: flex;
     flex: 1;
 }
 .side{
     background-color: #242526;
     border-right: 0.1px solid rgba(253, 253, 253, 0.2);
-    width: 27%;
-    height: 100%;
+    width: 24rem;
+    height: 100vh;
 }
 .side hr{
     width: 100%;
@@ -69,7 +71,7 @@
 .side .infSide{
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 23rem;
+    height: 60%;
     scrollbar-color: #505151 transparent;
     scrollbar-width: thin;
     padding: 0 15px 0 15px;
@@ -169,7 +171,7 @@
 }
 .imageAdd .boxUpload{
     width: 6rem;
-    height: 5rem;
+    height: 6rem;
     background-color: #18191a;
     border-radius: 8px;
     border: none;
@@ -355,4 +357,13 @@
 }
 .side .btns button{
     width: 48%;
+}
+
+@media only screen and (max-width: 900px) {
+    .side{
+        width: 100%;
+    }
+    .side .infSide{
+        height: 38rem;
+    }
 }

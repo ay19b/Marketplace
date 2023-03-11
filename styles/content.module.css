@@ -1,5 +1,5 @@
 .store{
-    flex: 0.75;
+    width: 81%;
     padding: 20px 28px;
     background-color: #18191a;
 }
@@ -21,7 +21,6 @@
 .store .product img{
     width: 100%;
     height: 70%;
-    
     border-radius: 10px;
 }
 .store .product .price{
@@ -31,6 +30,27 @@
 .store .product .location{
     color: white;
     direction: rtl;
+}
+@media only screen and (max-width:1280px) {
+    .store .product{
+        height: 22rem;
+        cursor: pointer;
+        width: 32%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .store .product{
+        height: 22rem;
+        width: 48%;
+    }
+}
+@media only screen and (max-width: 960px) {
+
+    .store .product{
+        height: 20rem;
+        cursor: pointer;
+        width: 48%;
+    }
 }
 @media only screen and (max-width: 900px) {
     .store {
@@ -63,7 +83,7 @@
         width: 48%;
     }
 }
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 380px) {
     .store .product{
         height: 18rem;
         cursor: pointer;
