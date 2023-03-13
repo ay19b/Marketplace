@@ -17,7 +17,7 @@
     top: 0;
     padding: 0 15px 0 15px;
 }
-.icons{
+/*.icons{
     padding: 6px 15px;
     display: flex;
     justify-content: end;
@@ -35,6 +35,29 @@
 }
 .icons img{
     border-radius: 50%;
+}*/
+.listIcons{
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0;
+}
+.listIcons .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3a3b3c;
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin-right: 6px;
+    color: #d8d2d2;
+    cursor: pointer;
+}
+.listIcons .icon:hover{
+    background-color: #545658;
+}
+.listIcons .icon h5{
+    margin-left: 4px;
+    font-size: 15px;
 }
 .prodInformation{
     overflow-y: scroll;

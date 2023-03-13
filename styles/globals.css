@@ -113,13 +113,16 @@ body{
 .carousel .control-prev.control-arrow::before{
   border-right: 8px solid #ffffff !important;
 }
+.carousel .control-arrow::before, .carousel.carousel-slider .control-arrow::before{
+  margin: 2px 5px !important;
+}
 .carousel .control-next.control-arrow::before{
   width: 18px;
   height: 18px;
   content: '';
   transform: rotate(50deg);
-  border-top: 2px solid #fff !important;
-  border-right: 2px solid white !important;
+  border-top: 1.8px solid #fff !important;
+  border-right: 1.8px solid white !important;
   border-left: none !important;
   border-bottom: none !important;
   margin-right: 12px !important;
@@ -130,8 +133,8 @@ body{
   content: '';
   transform: rotate(50deg);
   border-top: none !important;
-  border-bottom: 2px solid #fff !important;
-  border-left: 2px solid white !important;
+  border-bottom: 1.8px solid #fff !important;
+  border-left: 1.8px solid white !important;
   border-right: none !important;
   margin-left: 12px !important;
 }

@@ -4,11 +4,12 @@ import { useRouter } from "next/router";
 import Head from 'next/head'
 import Divider from '@mui/material/Divider';
 import Slider from "@/component/carousel";
-import {CgMenuGridO} from 'react-icons/cg'
+import {BsThreeDots,BsBookmarkFill} from 'react-icons/bs'
 import {RiMessengerFill} from "react-icons/ri"
 import Profil from '../public/profile.jpg'
 import Image from 'next/image'
-import {FaGamepad,FaBell} from 'react-icons/fa'
+import {FaGamepad,FaBell,FaFacebookMessenger} from 'react-icons/fa'
+import {TiArrowForward} from 'react-icons/ti'
 import TextField from '@mui/material/TextField';
 
 
@@ -25,9 +26,20 @@ export default function SideDetailProd({title,location,price,condition,disc}) {
                  <h3>DA {price}</h3>
                  <span>Listed a few seconds ago in {location}</span>
              </div>
-             <div className={style.condition}>
-                <span>condition</span>
-                <span>{condition}</span>
+             <div className={style.listIcons}>
+               <div className={style.icon}>
+                 <FaFacebookMessenger />
+                 <h5>Message</h5>
+               </div>
+               <div className={style.icon}>
+                  <TiArrowForward />
+               </div>
+               <div className={style.icon}>
+                 <BsBookmarkFill />
+               </div>
+               <div className={style.icon}>
+                 <BsThreeDots />
+               </div>               
              </div>
              <p className={style.disc}>{disc}</p>
              <div className={style.map}>
