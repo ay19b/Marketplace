@@ -1,0 +1,166 @@
+.sidebar{
+    border-right: 0.1px solid rgba(253, 253, 253, 0.2);
+    height: auto;
+    background-color: var(--bg-color);
+    padding: 0px 15px;
+    width: 24rem;
+}
+.containerSide{
+    position: sticky;
+    width: 100%;
+    top: 70px;
+}
+.headSidebar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    margin-bottom: 12px;
+    margin-top: 8px;
+}
+.headSidebar h1{
+    font-size: 24px;
+    font-weight: 900;
+}
+.headSidebar svg{
+    font-size: 2.15rem;
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    padding: 6px;
+    cursor: pointer;
+}
+.headSidebar svg:hover{
+    background-color: #434750;
+}
+.iconhelp{
+    display: none;
+    align-items: center;
+    padding: 8px 0;
+}
+.iconhelp svg{
+    background-color: #3a3b3c;
+    border-radius: 13px;
+    font-size: 32px;
+    padding: 4px 6px;
+    margin-right: 12px;
+    color: #ccc;
+    cursor: pointer;
+}
+.iconhelp svg:hover{
+    background-color: #4d4e50;
+}
+.iconhelp h4{
+    background-color: #3a3b3c;
+    border-radius: 13px;
+    font-size: 15px;
+    padding: 4px 10px;
+    margin-right: 12px;
+    color: #ccc;
+    cursor: pointer;
+}
+.iconhelp h4:hover{
+    background-color: #4d4e50;
+}
+.input{
+    position: relative;
+}
+.input svg{
+    position: absolute;
+    z-index: 10;
+    font-size: 22px;
+    top: 9px;
+    left: 6px;
+    color: #bbb;
+}
+.input input{
+    background-color: #3a3b3c;
+    border: none;
+    width: 100%;
+    position: absolute;
+    padding: 10px 0px 10px 32px;
+    border-radius: 18px;
+    outline: none;
+    color: #bbb;
+}
+.input input::placeholder{
+    font-size: 16px;
+}
+.list{
+    margin-top: 70px;
+    margin-bottom: 10px;
+}
+.list .item{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 12px;
+    padding: 6px;
+}
+.list .item:hover{
+    background-color: #3a3b3c;
+    border-radius: 8px;
+}
+.list .item.active{
+    background-color: #3a3b3c;
+    border-radius: 8px;
+}
+.list .item.active svg{
+    background-color: #2374e1;
+}
+.list .item svg {
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 35px;
+    cursor: pointer;
+    color: white;
+    margin-right: 12px;
+}
+.btn{
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    background-color: #263951;
+    color: #2d88ff;
+    border: none;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #3a516e;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+    .sidebar {
+        width: 100%;
+        height: 7rem;
+    }
+    .containerSide{
+        position: initial;
+    }
+    .headSidebar{
+        display: none;
+    }
+    .iconhelp{
+        display: flex;
+    }
+    .list{
+        display: none;
+    }
+    .containerSide a{
+        display: none;
+    }
+    .input{
+        position: relative;
+        display: flex;
+        padding-top: 10px;
+    }
+    .input svg{
+        top: 18px;
+    }
+}

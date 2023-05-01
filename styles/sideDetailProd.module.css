@@ -1,0 +1,159 @@
+.sideDetailProd{
+    flex: 0.3;
+}
+.side{
+    background-color: #242526;
+    border-right: 0.1px solid rgba(253, 253, 253, 0.2);
+    height: 100%;
+    padding-top: 61px;
+}
+.side hr{
+    width: 100%;
+    border-color: rgb(136, 140, 142);
+    margin: 12px 0;
+}
+.side .head{
+    position: sticky;
+    top: 0;
+    padding: 0 15px 0 15px;
+}
+/*.icons{
+    padding: 6px 15px;
+    display: flex;
+    justify-content: end;
+    position: sticky;
+    top: 0;
+}
+.icons svg{
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 38px;
+    cursor: pointer;
+    color: white;
+    margin-right: 12px;
+}
+.icons img{
+    border-radius: 50%;
+}*/
+.listIcons{
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0;
+}
+.listIcons .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3a3b3c;
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin-right: 6px;
+    color: #d8d2d2;
+    cursor: pointer;
+}
+.listIcons .icon:hover{
+    background-color: #545658;
+}
+.listIcons .icon h5{
+    margin-left: 4px;
+    font-size: 15px;
+}
+.prodInformation{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 23rem;
+    scrollbar-color: #505151 transparent;
+    scrollbar-width: thin;
+    padding: 0 15px 0 15px;
+}
+.prodInformation .sellerInfo{
+    margin-bottom: 16px;
+}
+.prodInformation .titleSeller{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.prodInformation .userSeller{
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+.userSeller img{
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.userSeller h4{
+    color: white;
+}
+.prodInformation h2{
+    color: white;
+}
+.prodInformation h3{
+    color: white;
+    font-weight: normal;
+}
+.prodInformation span{
+    color: #888c8e;
+}
+.prodInformation h5{
+    color: #888c8e;
+}
+.prodInformation .condition{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin: 8px 0;
+}
+.prodInformation .disc{
+    margin-bottom: 8px;
+    color: white;
+}
+.messanger{
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: #242526;
+    padding: 0 15px 0 15px;
+}
+.messanger .Iconmsg{
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.Iconmsg img{
+    width: 1.8rem;
+    margin-right: 10px;
+}
+.Iconmsg h4{
+    color: white;
+}
+.MuiTextField-root{
+    margin: 5px 0px !important;
+}
+.messanger .btn button{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #0882de;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+@media only screen and (max-width: 900px) {
+    .side{
+        padding-top: 35px;
+    }
+    .prodInformation{
+        overflow-y: visible;
+        height: 100%;
+    }
+    .messanger{
+        position: relative;
+    }
+}

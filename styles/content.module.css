@@ -1,0 +1,93 @@
+.store{
+    width: 81%;
+    padding: 20px 28px;
+    background-color: #18191a;
+    min-height: 100vh;
+}
+.store h3{
+    color: #e4e6eb;
+    margin-bottom: 18px;
+    font-weight: 900;
+}
+.store .products {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.store .product {
+    height: 27rem;
+    cursor: pointer;
+}
+.store .product img{
+    width: 100%;
+    height: 70%;
+    border-radius: 10px;
+}
+.store .product .price{
+    color: white;
+}
+.store .product .title,
+.store .product .location{
+    color: white;
+    direction: rtl;
+}
+@media only screen and (max-width:1280px) {
+    .store .product{
+        height: 22rem;
+        cursor: pointer;
+        width: 32%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .store .product{
+        height: 22rem;
+        width: 48%;
+    }
+}
+@media only screen and (max-width: 960px) {
+
+    .store .product{
+        height: 20rem;
+        cursor: pointer;
+        width: 48%;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .store {
+        width: 100%;
+    }
+    .store .product{
+        height: 20rem;
+        cursor: pointer;
+        width: 32%;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .store .product{
+        height: 23rem;
+        cursor: pointer;
+        width: 48%;
+    }
+}
+@media only screen and (max-width: 610px) {
+    .store .product{
+        height: 18rem;
+        cursor: pointer;
+        width: 32%;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .store .product{
+        height: 18rem;
+        cursor: pointer;
+        width: 48%;
+    }
+}
+@media only screen and (max-width: 380px) {
+    .store .product{
+        height: 18rem;
+        cursor: pointer;
+        width: 100%;
+    }
+}

@@ -1,0 +1,25 @@
+.detail{
+   overflow: hidden;
+   height: 100vh;
+}
+.detailProd{
+   display: flex;
+   margin-top: -61px;
+   height: 100%;
+}
+
+
+@media only screen and (max-width: 900px) {
+   .detail{
+      height: 100%;
+      overflow: visible;
+   }
+   .detailProd{
+       display: block;
+   }
+}
+@media only screen and (max-width: 600px) {
+   .detailProd{
+      margin-top: 0;
+   }
+ }

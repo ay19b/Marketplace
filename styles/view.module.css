@@ -1,0 +1,176 @@
+.view{
+    width: 72%;
+    background-color: #18191a;;
+}
+.view .container{
+    width: 95%;
+    height: 100%;
+    margin: auto;
+}
+.view hr{
+    width: 100%;
+    border-color: rgb(136, 140, 142);
+    margin: 12px 0;
+}
+.view .icons{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 10px;
+}
+.icons svg{
+    background-color: #3a3b3c;
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 38px;
+    color: white;
+    margin: 0 8px;
+    cursor: pointer;
+}
+.icons img{
+    margin-right: 5px;
+    border-radius: 50%;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.view .viewContent{
+    width: 57rem;
+    background-color: #242526;
+    height: 30rem;
+    border-radius: 8px;
+    margin: 30px auto 0 auto;
+    padding: 14px;
+}
+.viewContent h4{
+    color: white;
+    font-weight: normal;
+}
+.viewContent h3{
+    color: white;
+    font-weight: normal;
+}
+.viewContent .infoView{
+    width: 99%;
+    margin: auto;
+    height: 90%;
+    background-color: #404040;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+}
+.infoView .leftInfoView{
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.leftInfoView h2{
+    color: #a9b1b9;
+}
+.leftInfoView h4{
+    color: #9ca2a5;
+    width: 75%;
+    font-size: 16px;
+    font-weight: 600;
+}
+.leftInfoView img{
+    height: 100%;
+    width: 100%;
+}
+.infoView .rightInfoView{
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 45%;
+    height: 100%;
+    background-color: #242526;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.rightInfoView h2{
+    color: white;
+}
+.rightInfoView span{
+    color: #888c8e;
+}
+.rightInfoView h5{
+    color: #888c8e;
+}
+.rightInfoView .titleSeller{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.rightInfoView .userSeller{
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+.userSeller img{
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.userSeller h4{
+    color: white;
+}
+.rightInfoView .infoContainer{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 80%;
+    margin-bottom: 20px;
+    scrollbar-color: #505151 transparent;
+    scrollbar-width: thin;
+}
+.rightInfoView .btnMsg{
+    position: sticky;
+    bottom: 8px;
+    background-color: #242526;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+.rightInfoView .btnMsg button{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #505151;
+    border: none;
+    color: #848585;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.leftInfoView .carousel{
+    width: 100% !important;
+    height: 100% !important;
+}
+.leftInfoView .carousel div:nth-child(1){
+    height: 100% !important;
+}
+.carousel .thumbs{
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+}
+.carousel .item img{
+    width: 85% !important;
+    height: 90% !important;
+    margin-top: 15px !important;
+}  
+@media only screen and (max-width: 1350px) {
+    .view .viewContent{
+        width: 96%;
+        margin-top: 10px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .view{
+        display: none;
+    }
+}

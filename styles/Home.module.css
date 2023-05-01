@@ -1,0 +1,12 @@
+.marketplace{
+    height: 100vh;
+}
+.home{
+    display: flex;
+    width: 100%;
+}
+@media only screen and (max-width: 900px) {
+    .home{
+        display: block;
+    }
+}

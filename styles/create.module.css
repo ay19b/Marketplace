@@ -1,0 +1,369 @@
+.create{
+    height: 100vh;
+    overflow: hidden;
+}
+.car{
+    display: flex;
+    flex: 1;
+}
+.side{
+    background-color: #242526;
+    border-right: 0.1px solid rgba(253, 253, 253, 0.2);
+    width: 24rem;
+    height: 100vh;
+}
+.side hr{
+    width: 100%;
+    border-color: rgb(136, 140, 142);
+    margin: 12px 0;
+}
+.side .head{
+    position: sticky;
+    top: 0;
+    padding: 0 15px 0 15px;
+}
+.headSide{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+.headSide svg{
+    font-size: 2.6rem;
+}
+.headSide a {
+    margin-top: 4px;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.headSide a svg{
+    background-color: black;
+    border-radius: 50%;
+    padding: 9px;
+    fill: white;
+    width: 100%;
+    height: 100%;
+}
+.save{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.save .leftSave span{
+    color: #b0b3b8;
+}
+.save .leftSave h2{
+    color: white;
+}
+.save .rightSave button{
+    color: #2d88ff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+.save .rightSave button:hover{
+    background-color: #414346;
+}
+.side .infSide{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 60%;
+    scrollbar-color: #505151 transparent;
+    scrollbar-width: thin;
+    padding: 0 15px 0 15px;
+}
+
+.user{
+    display: flex;
+    margin-bottom: 18px;
+}
+.user img{
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.user .infUser .userName{
+    color: #b0b3b8;
+    font-weight: bolder;
+}
+.user .infUser h5{
+    margin-top: 6px;
+    color: #888c8e;
+}
+.MuiOutlinedInput-notchedOutline{
+    border-color: rgba(255, 255, 255, 0.23) !important;
+}
+.upload{
+    margin-top: 10px;
+}
+.upload .title{
+    color: #b0b3b8;
+    margin-bottom: 4px;
+}
+.upload .span{
+    color: #888c8e;
+}
+.upload .boxUpload{
+    border: 1px solid #888c8e;
+    width: 100%;
+    height: 10rem;
+    border-radius: 8px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin-bottom: 18px;
+    position: relative;
+}
+.upload .boxUpload:hover{
+    background-color: #404246;
+}
+.boxUpload svg{
+    color: white;
+    font-size: 2rem;
+}
+.boxUpload h3{
+    color: white;
+}
+.boxUpload span{
+    color: #888c8e;
+}
+.boxUpload input{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.imageAdd{
+    display: flex;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.imageAdd .img{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 6px;
+    margin: 8px 0;
+    position: relative;
+    overflow: hidden;
+    margin-right: 12px;
+}
+.imageAdd .img img:hover {
+    opacity: 0.5;
+}
+.imageAdd .img img{
+    width: 100%;
+    height: 100%;
+}
+.imageAdd .img svg{
+    position: absolute;
+    top: 4px;
+    right: 2px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.imageAdd .boxUpload{
+    width: 6rem;
+    height: 6rem;
+    background-color: #18191a;
+    border-radius: 8px;
+    border: none;
+    padding: 8px 0;
+    margin: 8px 0;
+}
+.imageAdd .boxUpload svg{
+    font-size: 1rem;
+    color: #888c8e;
+}
+.imageAdd .boxUpload h3{
+    font-size: 13px;
+    font-weight: normal;
+    color: #888c8e;
+}
+.vehicle .title{
+    color: #b0b3b8;
+    margin-bottom: 4px;
+}
+.vehicle .span{
+    color: #888c8e;
+}
+.MuiFormLabel{
+    color: white !important;
+}
+.vehicle .TextField label{
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+.price{
+    margin-top: 10px;
+}
+.price .title{
+    color: #b0b3b8;
+    margin-bottom: 4px;
+}
+.price .span{
+    color: #888c8e;
+}
+
+.dcp{
+    margin-top: 10px;
+}
+.dcp .title{
+    color: #b0b3b8;
+    margin-bottom: 4px;
+}
+.dcp .span{
+    color: #888c8e;
+}
+.option{
+    margin-top: -15px;
+    width: 95%;
+}
+.option span{
+    color: #b0b3b8;
+    font-size: 12px;
+}
+.option p{
+    color: #b0b3b8;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+.option p span{
+    color: #2b7be4;
+}
+.complet{
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: #242526;
+    
+    padding: 0 15px 0 15px;
+}
+.complet .checkComplet{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+.complet .checkComplet .barComplet{
+    width: 48%;
+    height: 7px;
+    border-radius: 10px;
+}
+.complet .checkComplet .barComplet{
+    background-color: #0882de;
+}
+.complet .checkComplet .emptyComplet{
+    background-color: #ffffff;
+    width: 48%;
+    height: 7px;
+    border-radius: 10px;
+}
+.complet hr{
+    width: 100%;
+    border-color: rgba(136, 140, 142,0.3);
+}
+.complet .btnDis{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #505151;
+    border: none;
+    color: #848585;
+    cursor: no-drop;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+.complet .btnPrev{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #505151;
+    border: none;
+    color: #848585;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+.complet .btnSubmit{
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #0882de;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+
+/*published*/
+
+.side .listPubl{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 23rem;
+    scrollbar-color: #505151 transparent;
+    scrollbar-width: thin;
+    padding: 0 15px 0 15px;
+}
+.listPubl h3{
+    color: white;
+}
+.listPubl .publicty{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.publicty .icon{
+    background-color: #404040;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    flex: 0.1;
+}
+.publicty .icon svg{
+    padding: 8px;
+    font-size: 20px;
+    color: #dfe2e8;
+}
+.publicty .infPublicty{
+    flex: 0.7;
+}
+.publicty .infPublicty h4{
+    color: white;
+    margin-bottom: 2px;
+}
+.publicty .infPublicty p{
+    color: #96989c;
+}
+.publicty .MuiButtonBase-root{
+    flex: 0.1;
+    color: rgb(91, 86, 86);
+}
+.side .btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.side .btns button{
+    width: 48%;
+}
+
+@media only screen and (max-width: 900px) {
+    .side{
+        width: 100%;
+    }
+    .side .infSide{
+        height: 38rem;
+    }
+}
