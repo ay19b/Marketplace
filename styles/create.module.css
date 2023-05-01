@@ -329,11 +329,12 @@
     border-radius: 50%;
     display: flex;
     align-items: center;
-    flex: 0.1;
+    width: 2rem;
+    height: 2rem;
 }
 .publicty .icon svg{
     padding: 8px;
-    font-size: 20px;
+    font-size: 34px;
     color: #dfe2e8;
 }
 .publicty .infPublicty{
