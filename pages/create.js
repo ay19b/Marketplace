@@ -297,7 +297,7 @@ export default function Create() {
           <Divider />
          <div className={style.vehicle}>
             <h3 className={style.title}>About this item</h3>
-            <span className={style.span}>Help buyers know more about the item that you're listing.</span>
+            <span className={style.span}>Help buyers know more about the item that you&apos;re listing.</span>
             <TextField
               id="outlined-basic"
               label="title"
@@ -362,7 +362,7 @@ export default function Create() {
          <Divider />
          <div className={style.dcp}>
             <h3 className={style.title}>Description</h3>
-            <span className={style.span}>Tell buyers anything that you haven't had the chance to include yet about your item.</span>
+            <span className={style.span}>Tell buyers anything that you haven&apos;t had the chance to include yet about your item.</span>
             <TextField
               id="outlined-multiline-static"
               label="Discription"
@@ -378,7 +378,7 @@ export default function Create() {
          <span>Optional</span>
          <p>Marketplace items are public and can be seen by anyone on or off Facebook.
            Items such as animals, drugs, weapons, counterfeits and other items that infringe intellectual
-            property aren't allowed on Marketplace.<span>See our Commerce Policies.</span> 
+            property aren&apos;t allowed on Marketplace.<span>See our Commerce Policies.</span> 
          </p>
          </div>
          
