@@ -13,7 +13,7 @@ export default function Slider({image,location}) {
       <div className={style.slider}>
           <Carousel showThumbs={image?.length>1? true:false} showIndicators={false}>
                 {image?.map((p, i) => (
-                  <div className={style.item}>
+                  <div className={style.item} key={i}>
                    <div className={style.BackImg} key={i} style={{backgroundImage:`url(${p.url})`}}></div>
                    <img src={p.url} alt={`slide ${i}`} className={style.img}/>
                  </div>

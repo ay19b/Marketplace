@@ -42,7 +42,7 @@ export default function DetailProd() {
        <Navbar show='false' bgColor={!matches} iconSearch='false'/>
        <div className={style.detailProd} >
        <Slider location={prod.location} image={prod.images}/> 
-       <SideDetailProd title={prod.title} location={prod.location} price={prod.price} condition={prod.condition} disc={prod.disc}/>
+       <SideDetailProd id={prod.id} title={prod.title} location={prod.location} price={prod.price} condition={prod.condition} disc={prod.disc}/>
     </div>
     </div>
     </>

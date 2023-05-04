@@ -11,9 +11,9 @@ import Image from 'next/image'
 import {FaGamepad,FaBell,FaFacebookMessenger} from 'react-icons/fa'
 import {TiArrowForward} from 'react-icons/ti'
 import TextField from '@mui/material/TextField';
+import Link from 'next/link'
 
-
-export default function SideDetailProd({title,location,price,condition,disc}) {
+export default function SideDetailProd({title,location,price,condition,disc,id}) {
   const mapSrc = `https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
   const mapStand = `https://maps.google.com/maps?q=algeria&t=&z=13&ie=UTF8&iwloc=&output=embed`;
   const [msg, setMsg] = useState('Bonjour, cet article est-il toujours disponible ?');
@@ -27,6 +27,11 @@ export default function SideDetailProd({title,location,price,condition,disc}) {
                  <span>Listed a few seconds ago in {location}</span>
              </div>
              <div className={style.listIcons}>
+              <div className={style.icon}>
+                <Link href={`/update/${id}`}>
+                  <h5>Edit</h5>
+                </Link>               
+               </div>
                <div className={style.icon}>
                  <FaFacebookMessenger />
                  <h5>Message</h5>
@@ -41,6 +46,7 @@ export default function SideDetailProd({title,location,price,condition,disc}) {
                  <BsThreeDots />
                </div>               
              </div>
+             
              <p className={style.disc}>{disc}</p>
              <div className={style.map}>
                    <div className={style.mapouter}>
@@ -82,6 +88,7 @@ export default function SideDetailProd({title,location,price,condition,disc}) {
               value={msg}
               sx={{ '& .MuiTextField-root': {  margin: '8px 0px' } }}
               onChange={(event) => setMsg(event.target.value)}
+              style={{backgroundColor: '#3a3b3c'}}
               fullWidth
              />
              <div className={style.btn}>

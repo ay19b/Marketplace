@@ -7,9 +7,9 @@ import Link from 'next/link';
 
 export default function Store() {
   const [prod, setProd] = useState([]);
-
+  
   useEffect(() => {
-    const storedProd = localStorage.getItem('prod');
+     const storedProd = localStorage.getItem('prod');
     if (storedProd) {
       setProd(JSON.parse(storedProd));
     }
@@ -20,13 +20,21 @@ console.log(prod);
   return (
     <div className={style.store}>
       <h3>Today's picks</h3>
-      <div className={style.products}>
-      {prod.map((p,index) => {
+      <div className={style.products}> 
+      {prod.length<1?
+      <div className={style.empty}>
+         <h1 className={style.headEmpty}>The MarketPlace is Empty</h1>
+         <Link href="/create">
+              <button className={style.btn}>+ Create new listing</button>
+           </Link>
+      </div>
+        :    
+        prod?.map((p,index) => {
           return (
             <div className={style.product} key={p.id}>
               <Link href={`/product/${p.id}`}>
               <Image
-               src={p.images[0].url}
+               src={p.images[0]?.url}
                alt=""
                width='40'
                height='40'
@@ -37,7 +45,8 @@ console.log(prod);
               </Link>
             </div>
           )
-        })}
+        })
+      }
       </div>
     </div>
   )

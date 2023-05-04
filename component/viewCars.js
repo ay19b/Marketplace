@@ -27,14 +27,14 @@ export default function ViewCars({title,photo,price,location,disc,selected,setSe
          <div className={style.infoView}>
           
             <div className={style.leftInfoView}>
-             {photo.length>0?
+             {photo?.length>0?
                 
               <Carousel 
-                showThumbs={image.length>1? true:false}
+                showThumbs={image?.length>1? true:false}
                 selectedItem={selected}
                 onChange={setSelected}
                 className={style.carousel}>
-                {image.map((p, i) => (
+                {image?.map((p, i) => (
                  <div key={i} autoFocus className={style.item}>
                    <img src={p.url} alt={`slide ${i}`} />
                  </div>

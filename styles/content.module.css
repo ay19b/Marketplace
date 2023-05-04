@@ -9,20 +9,50 @@
     margin-bottom: 18px;
     font-weight: 900;
 }
+.store .empty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+.store .headEmpty{
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 16px;
+}
+.btn{
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    background-color: #263951;
+    color: #2d88ff;
+    border: none;
+    font-size: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: #3a516e;
+}
 .store .products {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .store .product {
-    height: 27rem;
+    height: 25rem;
     cursor: pointer;
+    width: 19rem;
+    margin-right: 8px;
 }
 .store .product img{
     width: 100%;
-    height: 70%;
+    height: 78%;
     border-radius: 10px;
+    object-fit: cover;
 }
 .store .product .price{
     color: white;
@@ -30,21 +60,33 @@
 .store .product .title,
 .store .product .location{
     color: white;
+    font-weight: initial;
+}
+.store .product .location{
     direction: rtl;
+}
+
+@media only screen and (max-width:1330px) {
+    .store .products {
+        justify-content: space-between;
+    }
+    .store .product{
+        width: 18rem;
+    }
 }
 @media only screen and (max-width:1280px) {
     .store .product{
         height: 22rem;
         cursor: pointer;
-        width: 32%;
+        width: 48%;
     }
 }
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
     .store .product{
         height: 22rem;
         width: 48%;
     }
-}
+} */
 @media only screen and (max-width: 960px) {
 
     .store .product{
@@ -70,13 +112,13 @@
         width: 48%;
     }
 }
-@media only screen and (max-width: 610px) {
+/* @media only screen and (max-width: 610px) {
     .store .product{
         height: 18rem;
         cursor: pointer;
         width: 32%;
     }
-}
+} */
 @media only screen and (max-width: 550px) {
     .store .product{
         height: 18rem;
@@ -84,7 +126,7 @@
         width: 48%;
     }
 }
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 460px) {
     .store .product{
         height: 18rem;
         cursor: pointer;

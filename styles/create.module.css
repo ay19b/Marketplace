@@ -287,7 +287,7 @@
     font-size: 18px;
     background-color: #505151;
     border: none;
-    color: #848585;
+    color: #fff;
     cursor: pointer;
     border-radius: 8px;
     margin: 12px 0;
@@ -365,6 +365,6 @@
         width: 100%;
     }
     .side .infSide{
-        height: 38rem;
+        height: 20rem;
     }
 }

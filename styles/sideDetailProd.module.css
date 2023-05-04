@@ -117,6 +117,7 @@
     z-index: 10;
     background-color: #242526;
     padding: 0 15px 0 15px;
+    border-top: 1px solid #505151;
 }
 .messanger .Iconmsg{
     display: flex;
@@ -136,8 +137,8 @@
 }
 .messanger .btn button{
     width: 100%;
-    padding: 10px;
-    font-size: 18px;
+    padding: 8px;
+    font-size: 16px;
     background-color: #0882de;
     border: none;
     color: #ffffff;
