@@ -14,6 +14,11 @@ const theme = createTheme({
         borderColor: 'rgba(238, 194, 194, 0.23)!important',
         color: 'aliceblue',
     },
+    MuiSkeleton: {
+      root: {
+        backgroundColor: 'rgba(200, 200, 200, 0.11) !important',
+      },
+    },
   },
 });
 

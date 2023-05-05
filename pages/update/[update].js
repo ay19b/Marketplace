@@ -25,7 +25,7 @@ import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
 import { NumericFormat } from 'react-number-format';
 import Navbar from '@/component/navbar'
-
+import LZString from 'lz-string';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const names = [
@@ -104,9 +104,17 @@ export default function Update() {
     const id = key.update
   
     useEffect(() => {
-      const storedProducts = JSON.parse(localStorage.getItem('prod'))
-      const prd = storedProducts.find(p => p.id === id)
-      setProd(prd)
+      // const storedProducts = JSON.parse(localStorage.getItem('prod'))
+      // const prd = storedProducts.find(p => p.id === id)
+      // setProd(prd)
+      const storedData = localStorage.getItem('prod');
+      if (storedData) {
+        const decompressedData = LZString.decompress(storedData);
+        const parsedData = JSON.parse(decompressedData);
+        const item =parsedData.find((item) => item.id === id);
+        // Use parsedData to retrieve the desired item...
+        setProd(item)
+      }
     }, [id])
 
 
@@ -180,11 +188,33 @@ export default function Update() {
       }
     }
 
-    const handleUpdate= (event) => {
+    // const handleUpdate= (event) => {
+    //   event.preventDefault();
+    //   const existingItems = localStorage.getItem('prod') || [];
+    //   const decompressedData = LZString.decompress(existingItems);
+    //   const parsedData = JSON.parse(decompressedData);
+    //   const updatedItem = {id,type, images,location, condition,title, price, disc };
+    //   const updatedItems = parsedData.map(item => {
+    //     if (item.id === id) {
+    //       return {
+    //         ...item,
+    //         ...updatedItem // Update the item properties with the updated values
+    //       };
+    //     }
+    //     return item;
+    //    });
+    //    localStorage.setItem('prod', JSON.stringify(updatedItems));
+    //    setSubmit(true)
+    //    router.push('/')
+    // };
+
+    const handleUpdate = (event) => {
       event.preventDefault();
-      const existingItems = JSON.parse(localStorage.getItem('prod')) || [];
+      const existingItems = localStorage.getItem('prod') || '[]';
+      const decompressedData = LZString.decompress(existingItems);
+      const parsedData = JSON.parse(decompressedData);
       const updatedItem = {id,type, images,location, condition,title, price, disc };
-      const updatedItems = existingItems.map(item => {
+      const updatedItems = parsedData.map((item) => {
         if (item.id === id) {
           return {
             ...item,
@@ -192,16 +222,18 @@ export default function Update() {
           };
         }
         return item;
-       });
-       localStorage.setItem('prod', JSON.stringify(updatedItems));
-       setSubmit(true)
-       router.push('/')
+      });
+      localStorage.setItem('prod', LZString.compress(JSON.stringify(updatedItems)));
+      setSubmit(true);
+      router.push('/');
     };
 
     const deleteItem = (id) => {
-      const existingItems = JSON.parse(localStorage.getItem('prod')) || [];
-      const updatedItems = existingItems.filter(item => item.id !== id);
-      localStorage.setItem('prod', JSON.stringify(updatedItems));
+      const existingItems = localStorage.getItem('prod') || [];
+      const decompressedData = LZString.decompress(existingItems);
+      const parsedData = JSON.parse(decompressedData);
+      const delateItems = parsedData.filter(item => item.id !== id);
+      localStorage.setItem('prod', LZString.compress(JSON.stringify(delateItems)));
       router.push('/')
     };
 

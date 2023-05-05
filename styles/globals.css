@@ -147,8 +147,6 @@ body{
   color: rgba(255, 255, 255, 0.26) !important;
 }
 
-
-
 @media only screen and (max-width: 900px) {
   .carousel.carousel-slider {
      height: 30rem !important;

@@ -14,7 +14,7 @@ import Image from 'next/image'
 import {FaGamepad,FaBell} from 'react-icons/fa'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import SideDetailProd from "@/component/sideDetailProd";
-
+import LZString from 'lz-string';
 
 export default function DetailProd() {
     const matches = useMediaQuery('(max-width:900px)');
@@ -23,10 +23,13 @@ export default function DetailProd() {
     const [prod, setProd] = useState('');
    
   useEffect(() => {
-    const storedProd = JSON.parse(localStorage.getItem('prod'));
-    const product = storedProd.find((product) => product.id === id);
-    if (product) {
-      setProd(product);
+    const storedData = localStorage.getItem('prod');
+    if (storedData) {
+      const decompressedData = LZString.decompress(storedData);
+      const parsedData = JSON.parse(decompressedData);
+      const item =parsedData.find((item) => item.id === id);
+      // Use parsedData to retrieve the desired item...
+      setProd(item)
     }
   }, [id]);
 

@@ -3,25 +3,46 @@ import style from '../styles/content.module.css'
 import Profil from '../public/profile.jpg'
 import Image from 'next/image'
 import Link from 'next/link';
+import CircularProgress from '@mui/material/CircularProgress';
+import LZString from 'lz-string';
+import Skeleton from '@mui/material/Skeleton';
 
 
 export default function Store() {
   const [prod, setProd] = useState([]);
-  
+  const [loading,setLoading]= useState(true)
+  const skeletonProducts = [];
+
   useEffect(() => {
-     const storedProd = localStorage.getItem('prod');
-    if (storedProd) {
-      setProd(JSON.parse(storedProd));
+    const storedData = localStorage.getItem('prod');
+    if (storedData) {
+      const decompressedData = LZString.decompress(storedData);
+      const parsedData = JSON.parse(decompressedData);
+      setProd(parsedData);
     }
+    setTimeout(()=>{
+      setLoading(false)
+    },1800)
   }, []);
 
-console.log(prod);
+  // skelton loading before get a products from api 
+  for (let i = 0; i < 6; i++) {
+    skeletonProducts.push(
+      <div key={i} className={style.product}>
+        <Skeleton variant="rectangular" className={style.skeleton} height={300} />
+        <Skeleton animation="wave" className={style.skeleton}/>
+        <Skeleton animation={false} className={style.skeleton}/>
+      </div>
+    );
+  }
 
   return (
     <div className={style.store}>
       <h3>Today's picks</h3>
       <div className={style.products}> 
-      {prod.length<1?
+      {loading?<>{skeletonProducts}</>:
+      // <div className={style.spinner}><CircularProgress /></div>:
+      prod.length<1?
       <div className={style.empty}>
          <h1 className={style.headEmpty}>The MarketPlace is Empty</h1>
          <Link href="/create">
