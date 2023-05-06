@@ -410,7 +410,7 @@ export default function Update() {
         
          <div className={style.complet}>
          <div className={style.checkComplet}>           
-            <div className={style.emptyComplet} style={{width:'100%'}}></div>
+            <div className={style.emptyComplet} style={{width:'0'}}></div>
           </div>
           <Divider />
           <div className={style.btns}>
