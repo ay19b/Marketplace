@@ -15,7 +15,7 @@
 .side hr{
     width: 100%;
     border-color: rgb(136, 140, 142);
-    margin: 12px 0;
+    /* margin: 12px 0; */
 }
 .side .head{
     position: sticky;
@@ -278,7 +278,7 @@
     color: #848585;
     cursor: no-drop;
     border-radius: 8px;
-    margin: 12px 0;
+    margin: 17px 0;
 }
 .complet .btnPrev{
     width: 100%;
@@ -289,7 +289,7 @@
     color: #fff;
     cursor: pointer;
     border-radius: 8px;
-    /* margin: 12px 0; */
+    margin: 17px 0;
 }
 .complet .btnSubmit{
     width: 100%;
@@ -300,19 +300,27 @@
     color: #ffffff;
     cursor: pointer;
     border-radius: 8px;
-    margin: 12px 0;
+    margin: 17px 0;
 }
-
+.circle{
+    width: 15px !important;
+    height: 15px !important;
+    color: #ffffff !important;
+    margin-left: -19.8px !important;
+}
 
 /*published*/
 
 .side .listPubl{
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 23rem;
+    height: 60%;
     scrollbar-color: #505151 transparent;
     scrollbar-width: thin;
     padding: 0 15px 0 15px;
+}
+.side form {
+    height: 100%;
 }
 .listPubl h3{
     color: white;

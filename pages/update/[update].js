@@ -2,30 +2,25 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import ViewCars from '@/component/viewCars'
 import {MdCancel} from 'react-icons/md'
-import {FaMapMarkerAlt, FaProjectDiagram} from 'react-icons/fa'
-import {BsFacebook} from "react-icons/bs"
-import {MdGroups,MdStorefront} from 'react-icons/md'
-import {GiWorld} from "react-icons/gi"
-import {AiFillFileAdd} from 'react-icons/ai'
+import {FaMapMarkerAlt} from 'react-icons/fa'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import {AiFillFileAdd} from 'react-icons/ai'
+import {GiWorld} from "react-icons/gi"
 import Select from '@mui/material/Select';
-import Link from 'next/link'
 import Divider from '@mui/material/Divider';
-import Profil from '../../public/profile.jpg'
 import Image from 'next/image'
 import TextField from '@mui/material/TextField';
 import style from '../../styles/create.module.css'
-import FilledInput from '@mui/material/FilledInput';
 import InputAdornment from '@mui/material/InputAdornment';
-import Checkbox from '@mui/material/Checkbox';
 import { useRouter } from 'next/router'
-import uuid from 'react-uuid';
 import PropTypes from 'prop-types';
 import { NumericFormat } from 'react-number-format';
 import Navbar from '@/component/navbar'
 import LZString from 'lz-string';
+import CircularProgress from '@mui/material/CircularProgress';
+import Profil from '../../public/profile.jpg'
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const names = [
@@ -84,6 +79,8 @@ const names = [
 
 export default function Update() {
     const router = useRouter()
+    const [loading,setLoading]= useState(false)
+    const [delate,setDelate]= useState(false)
     const [prod, setProd] = useState([]);
     const [type, setType] = useState('');
     const [images, setImages] = useState([]);
@@ -104,9 +101,6 @@ export default function Update() {
     const id = key.update
   
     useEffect(() => {
-      // const storedProducts = JSON.parse(localStorage.getItem('prod'))
-      // const prd = storedProducts.find(p => p.id === id)
-      // setProd(prd)
       const storedData = localStorage.getItem('prod');
       if (storedData) {
         const decompressedData = LZString.decompress(storedData);
@@ -207,6 +201,15 @@ export default function Update() {
       router.push('/');
       setSubmit(true);
     };
+
+    const waitSubmit =(event)=>{
+      event.preventDefault();
+      setLoading(true)
+    }
+    const waitDelate =(event)=>{
+      event.preventDefault();
+      setDelate(true)
+    }
 
     const deleteItem = (id) => {
       const existingItems = localStorage.getItem('prod') || [];
@@ -411,8 +414,22 @@ export default function Update() {
           </div>
           <Divider />
           <div className={style.btns}>
-            <button className={style.btnPrev} onClick={handleDelete} style={{backgroundColor: '#8c2020'}}>Delate</button>
-            <button className={!btn ?style.btnDis:style.btnSubmit} onClick={handleUpdate}>Update</button>
+            <button 
+              className={style.btnPrev}
+              onClick={handleDelete}
+              style={{ backgroundColor: !delate ? "#8c2020" : "#853030" }}
+              onMouseDown={waitDelate}>
+                {delate && <CircularProgress className={style.circle} />}
+                {'  Delate'}
+              </button>
+            <button 
+              className={!btn ?style.btnDis:style.btnSubmit}
+              style={{ backgroundColor: !loading ? "#0882de" : "#509eda" }}
+              onClick={handleUpdate}
+              onMouseDown={waitSubmit}>
+                {loading && <CircularProgress className={style.circle} />}
+                {'  Update'}
+              </button>
           </div>
          </div>
         </div>

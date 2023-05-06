@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import style from '../styles/content.module.css'
-import Profil from '../public/profile.jpg'
 import Image from 'next/image'
 import Link from 'next/link';
-import CircularProgress from '@mui/material/CircularProgress';
 import LZString from 'lz-string';
 import Skeleton from '@mui/material/Skeleton';
-
+import msg from "../public/msg.svg"
 
 export default function Store() {
   const [prod, setProd] = useState([]);
@@ -29,7 +27,7 @@ export default function Store() {
   for (let i = 0; i < 6; i++) {
     skeletonProducts.push(
       <div key={i} className={style.product}>
-        <Skeleton variant="rectangular" className={style.skeleton} height={300} />
+        <Skeleton variant="rectangular" className={style.skeleton} height={325} />
         <Skeleton animation="wave" className={style.skeleton}/>
         <Skeleton animation={false} className={style.skeleton}/>
       </div>
@@ -38,13 +36,19 @@ export default function Store() {
 
   return (
     <div className={style.store}>
-      <h3>Today's picks</h3>
+      {prod?.length>0?<h3>Today's picks</h3>:null}  
       <div className={style.products}> 
       {loading?<>{skeletonProducts}</>:
       // <div className={style.spinner}><CircularProgress /></div>:
       prod.length<1?
       <div className={style.empty}>
-         <h1 className={style.headEmpty}>The MarketPlace is Empty</h1>
+        <Image
+          src={msg}
+          alt=""
+          width='112'
+          height='112'
+         />
+         <h2 className={style.headEmpty}>When you start selling, your listings will appear here.</h2>
          <Link href="/create">
               <button className={style.btn}>+ Create new listing</button>
            </Link>

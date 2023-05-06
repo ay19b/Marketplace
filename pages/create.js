@@ -3,21 +3,18 @@ import Head from 'next/head'
 import ViewCars from '@/component/viewCars'
 import {MdCancel} from 'react-icons/md'
 import {FaMapMarkerAlt} from 'react-icons/fa'
-import {BsFacebook} from "react-icons/bs"
-import {MdGroups,MdStorefront} from 'react-icons/md'
+import {MdStorefront} from 'react-icons/md'
 import {GiWorld} from "react-icons/gi"
 import {AiFillFileAdd} from 'react-icons/ai'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Link from 'next/link'
 import Divider from '@mui/material/Divider';
 import Profil from '../public/profile.jpg'
 import Image from 'next/image'
 import TextField from '@mui/material/TextField';
 import style from '../styles/create.module.css'
-import FilledInput from '@mui/material/FilledInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import Checkbox from '@mui/material/Checkbox';
 import { useRouter } from 'next/router'
@@ -26,6 +23,8 @@ import PropTypes from 'prop-types';
 import { NumericFormat } from 'react-number-format';
 import Navbar from '@/component/navbar'
 import LZString from 'lz-string';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const names = [
@@ -84,6 +83,7 @@ const names = [
 
 export default function Create() {
     const router = useRouter()
+    const [loading,setLoading]= useState(false)
     const [type, setType] = useState('');
     const [images, setImages] = useState([]);
     const [location, setLocation] = useState('algeria');
@@ -166,23 +166,30 @@ export default function Create() {
       }
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
       event.preventDefault();
+      
       if (type && images && location && condition && title && price && disc) {
-        const existingProd = JSON.parse(LZString.decompress(localStorage.getItem('prod')) || '[]');
-        const newItem = { id, type, images, location, condition, title, price, disc };
-        const updatedProd = [...existingProd, newItem];
-        const compressedData = LZString.compress(JSON.stringify(updatedProd));
-        localStorage.setItem('prod', compressedData);
-        console.log(localStorage.getItem('prod'));
-        router.push('/');
-        setSubmit(true);       
+        try {
+          const existingProd = JSON.parse(LZString.decompress(localStorage.getItem('prod')) || '[]');
+          const newItem = { id, type, images, location, condition, title, price, disc };
+          const updatedProd = [...existingProd, newItem];
+          const compressedData = LZString.compress(JSON.stringify(updatedProd));
+          localStorage.setItem('prod', compressedData);
+          await router.push('/');
+          setSubmit(true);
+        } catch (error) {
+          console.log('Error: ', error);
+        }
       } else {
         console.log('error');
       }
     };
-    
 
+    const waitSubmit =(event)=>{
+      event.preventDefault();
+      setLoading(true)
+    }
     const prev = (event)=>{
       event.preventDefault();
       setSubmit(false)
@@ -271,13 +278,6 @@ export default function Create() {
               <div className={style.imageAdd}>
                   {images.map((image, index) => (
                     <div className={style.img} id={index} key={index} onDrop={(event) => drop(event)} onDragOver={(event) => allowDrop(event)}>
-                       {/* <Image
-                       id={index}
-                       src={image.url}
-                       alt="Uploaded Image"
-                       onDragStart={(event) => drag(event)}
-                       draggable="true"
-                     /> */}
                      <img id={index} src={image.url} alt="Uploaded Image" draggable="true" onDragStart={(event) => drag(event)}/>
                      <MdCancel onClick={() => handleRemove(index)}/>
                     </div>
@@ -397,7 +397,6 @@ export default function Create() {
          </div>
         </div>:
         <div className={style.side}>
-         <form onSubmit={handleSubmit}>
           <div className={style.head}>            
           <div className={style.save}>
             <div className={style.leftSave}>
@@ -428,10 +427,16 @@ export default function Create() {
           <Divider />
           <div className={style.btns}>
             <button className={style.btnPrev} onClick={prev}>Previous</button>
-            <button className={!btn ?style.btnDis:style.btnSubmit} type="submit">Publish</button>
+            <button 
+               className={!btn ?style.btnDis:style.btnSubmit}
+               style={{ backgroundColor: !loading ? "#0882de" : "#509eda" }}
+               onClick={handleSubmit}
+               onMouseDown={waitSubmit}>
+                {loading && <CircularProgress className={style.circle} />}
+                {'  Publish'}
+              </button>
           </div>
          </div>
-         </form>
         </div>
         }
        <ViewCars 
