@@ -188,26 +188,6 @@ export default function Update() {
       }
     }
 
-    // const handleUpdate= (event) => {
-    //   event.preventDefault();
-    //   const existingItems = localStorage.getItem('prod') || [];
-    //   const decompressedData = LZString.decompress(existingItems);
-    //   const parsedData = JSON.parse(decompressedData);
-    //   const updatedItem = {id,type, images,location, condition,title, price, disc };
-    //   const updatedItems = parsedData.map(item => {
-    //     if (item.id === id) {
-    //       return {
-    //         ...item,
-    //         ...updatedItem // Update the item properties with the updated values
-    //       };
-    //     }
-    //     return item;
-    //    });
-    //    localStorage.setItem('prod', JSON.stringify(updatedItems));
-    //    setSubmit(true)
-    //    router.push('/')
-    // };
-
     const handleUpdate = (event) => {
       event.preventDefault();
       const existingItems = localStorage.getItem('prod') || '[]';
@@ -224,8 +204,8 @@ export default function Update() {
         return item;
       });
       localStorage.setItem('prod', LZString.compress(JSON.stringify(updatedItems)));
-      setSubmit(true);
       router.push('/');
+      setSubmit(true);
     };
 
     const deleteItem = (id) => {

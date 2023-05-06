@@ -166,38 +166,6 @@ export default function Create() {
       }
     }
 
-    // const handleSubmit = (event) => {
-    //   event.preventDefault();
-    //   if(type && images && location && condition && title && price && disc){
-    //     const existingProd = JSON.parse(localStorage.getItem('prod')) || [];
-    //     const newItem = {id,type, images,location, condition,title, price, disc };
-    //     const updatedProd = [...existingProd, newItem]
-    //     localStorage.setItem('prod', JSON.stringify(updatedProd))
-    //     console.log(localStorage.getItem('prod'));
-    //     setSubmit(true)
-    //     router.push('/')
-    //   }else{
-    //     console.log("error");
-    //   }
-    // };
-
-    // const handleSubmit = (event) => {
-    //   event.preventDefault();
-    //   if(type && images && location && condition && title && price && disc){
-    //     const existingProd = localStorage.getItem('prod') || [];
-    //     const newItem = {id,type, images,location, condition,title, price, disc };  
-    //     const compressedData = LZString.compress(JSON.stringify(existingProd));
-    //     const parsedData = JSON.parse(decompressedData);
-    //     const updatedProd = [...parsedData, newItem]
-    //     localStorage.setItem('prod', updatedProd);
-    //     console.log(localStorage.getItem('prod'));
-    //     setSubmit(true)
-    //     router.push('/')
-    //   } else {
-    //     console.log("error");
-    //   }
-    // };
-
     const handleSubmit = (event) => {
       event.preventDefault();
       if (type && images && location && condition && title && price && disc) {
@@ -207,8 +175,8 @@ export default function Create() {
         const compressedData = LZString.compress(JSON.stringify(updatedProd));
         localStorage.setItem('prod', compressedData);
         console.log(localStorage.getItem('prod'));
-        setSubmit(true);
         router.push('/');
+        setSubmit(true);       
       } else {
         console.log('error');
       }
